@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FLIPOINT | Learn — Midnight Zone</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@100..900&family=IBM+Plex+Mono:wght@100..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/js/tailwind-config.js"></script>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="font-body-md text-on-background selection:bg-bioluminescence selection:text-abyss-ink">
+
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none" id="particle-container"></div>
+
+<header id="siteNav" class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-surface/10 backdrop-blur-xl border-b border-foam-white/10 text-foam-white transition-all duration-300">
+<a href="index.html" class="font-display-hero text-headline-md font-bold text-bioluminescence flex items-center gap-3">
+<img src="assets/images/flipoint-logo.png" alt="FLIPOINT" class="h-10 w-auto">FLIPOINT
+</a>
+<div class="hidden md:flex gap-12 items-center">
+<a class="text-on-surface-variant hover:text-foam-white transition-colors font-body-md" href="index.html">Home</a>
+<a class="text-bioluminescence font-bold border-b-2 border-bioluminescence pb-1 font-body-md" href="learn.html">Learn</a>
+<a class="text-on-surface-variant hover:text-foam-white transition-colors font-body-md" href="about.html">About</a>
+<a class="text-on-surface-variant hover:text-foam-white transition-colors font-body-md" href="contact.html">Contact</a>
+</div>
+<div class="flex items-center gap-3">
+<a href="login.html" class="js-profile-link hidden sm:inline-flex bg-white/5 hover:bg-white/10 px-6 py-2 rounded-full transition-all duration-300 border border-white/10">Profile</a>
+<button id="mobileNavToggle" class="md:hidden text-foam-white"><span class="material-symbols-outlined">menu</span></button>
+</div>
+</header>
+
+<div id="mobileNavMenu" class="hidden fixed top-20 left-0 w-full bg-abyss-ink/95 backdrop-blur-xl z-40 md:hidden flex flex-col p-8 gap-6 border-b border-white/10">
+<a href="index.html" class="text-foam-white/80">Home</a>
+<a href="learn.html" class="text-bioluminescence font-bold">Learn</a>
+<a href="about.html" class="text-foam-white/80">About</a>
+<a href="contact.html" class="text-foam-white/80">Contact</a>
+<a href="login.html" class="js-profile-link text-foam-white/80">Profile</a>
+</div>
+
+<!-- Depth Gauge -->
+<aside class="fixed right-4 top-1/2 -translate-y-1/2 w-16 z-40 hidden md:flex flex-col items-center py-8 gap-10 bg-ocean-navy/40 backdrop-blur-md border-l border-white/5 shadow-2xl rounded-l-full">
+<span class="font-data-sm text-data-sm text-coral-sand uppercase tracking-widest [writing-mode:vertical-rl] mb-2">Depth</span>
+<a href="index.html" class="flex flex-col items-center justify-center text-outline opacity-50 hover:opacity-100 hover:text-secondary cursor-pointer transition-all">
+<span class="material-symbols-outlined mb-1">water_drop</span>
+<span class="font-data-sm text-data-sm">0m</span>
+</a>
+<a href="report.html" class="flex flex-col items-center justify-center text-outline opacity-50 hover:opacity-100 hover:text-secondary cursor-pointer transition-all">
+<span class="material-symbols-outlined mb-1">waves</span>
+<span class="font-data-sm text-data-sm">600m</span>
+</a>
+<div class="flex flex-col items-center justify-center text-bioluminescence scale-110 relative">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">scuba_diving</span>
+<span class="font-data-sm text-data-sm font-bold">1200m</span>
+<div class="sonar-ping pointer-events-none"></div>
+</div>
+</aside>
+
+<main class="relative z-10 pt-32 pb-section-gap">
+<header class="px-margin-mobile md:px-margin-desktop mb-20 max-w-4xl">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-bioluminescence/10 border border-bioluminescence/30 text-bioluminescence mb-6">
+<span class="font-data-sm text-data-sm tracking-widest uppercase">The Midnight Zone</span>
+<span class="w-2 h-2 bg-bioluminescence rounded-full animate-pulse"></span>
+</div>
+<h1 class="font-display-hero text-[38px] md:text-display-hero text-foam-white leading-none mb-8">Arsip Belajar <span class="text-bioluminescence italic">Laut Dalam</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+Selami arsip pengetahuan tentang tiga penghuni laut Bali — penyu, paus, dan lumba-lumba — sekaligus kuasai cara memverifikasi informasi konservasi di era digital.
+</p>
+</header>
+
+<!-- Species Cards -->
+<section class="mb-section-gap">
+<div class="px-margin-mobile md:px-margin-desktop mb-8">
+<h2 class="font-headline-lg text-[26px] md:text-headline-lg text-foam-white">Direktori Satwa Laut</h2>
+</div>
+<div class="flex gap-gutter px-margin-mobile md:px-margin-desktop overflow-x-auto pb-12 snap-x snap-mandatory">
+<!-- Turtle -->
+<article class="flex-shrink-0 w-[85vw] max-w-[420px] group snap-start cursor-pointer">
+<div class="relative h-[560px] rounded-[40px] overflow-hidden border border-bioluminescence/20 glass-card">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 opacity-70 group-hover:opacity-90" alt="Penyu Hijau" src="assets/images/turtle.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink via-abyss-ink/20 to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full">
+<span class="font-data-sm text-data-sm text-coral-sand uppercase tracking-[0.2em] mb-3 block">Spesies 01</span>
+<h3 class="font-display-hero text-headline-md text-foam-white mb-4">Penyu Hijau</h3>
+<div class="flex items-center gap-6 mb-6">
+<div class="flex flex-col">
+<span class="font-data-sm text-data-sm text-outline mb-1 uppercase">Status</span>
+<span class="text-bioluminescence font-bold">Terancam Punah</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-sm text-data-sm text-outline mb-1 uppercase">Habitat</span>
+<span class="text-foam-white">Perairan Dangkal &amp; Reef</span>
+</div>
+</div>
+<button onclick="openSpeciesModal('turtle')" class="bg-bioluminescence text-abyss-ink px-6 py-3 rounded-[14px] font-bold text-sm tracking-wider flex items-center gap-2 group-hover:scale-105 transition-transform">
+BUKA DOSIER <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Whale -->
+<article class="flex-shrink-0 w-[85vw] max-w-[420px] group snap-start cursor-pointer">
+<div class="relative h-[560px] rounded-[40px] overflow-hidden border border-bioluminescence/20 glass-card">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 opacity-70 group-hover:opacity-90" alt="Paus Bungkuk" src="assets/images/whale.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink via-abyss-ink/20 to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full">
+<span class="font-data-sm text-data-sm text-coral-sand uppercase tracking-[0.2em] mb-3 block">Spesies 02</span>
+<h3 class="font-display-hero text-headline-md text-foam-white mb-4">Paus Bungkuk</h3>
+<div class="flex items-center gap-6 mb-6">
+<div class="flex flex-col">
+<span class="font-data-sm text-data-sm text-outline mb-1 uppercase">Status</span>
+<span class="text-secondary font-bold">Risiko Rendah</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-sm text-data-sm text-outline mb-1 uppercase">Berat Rata-rata</span>
+<span class="text-foam-white">30.000 KG</span>
+</div>
+</div>
+<button onclick="openSpeciesModal('whale')" class="bg-bioluminescence text-abyss-ink px-6 py-3 rounded-[14px] font-bold text-sm tracking-wider flex items-center gap-2 group-hover:scale-105 transition-transform">
+BUKA DOSIER <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Dolphin -->
+<article class="flex-shrink-0 w-[85vw] max-w-[420px] group snap-start cursor-pointer">
+<div class="relative h-[560px] rounded-[40px] overflow-hidden border border-bioluminescence/20 glass-card">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 opacity-70 group-hover:opacity-90" alt="Lumba-lumba Hidung Botol" src="assets/images/dolphin.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink via-abyss-ink/20 to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full">
+<span class="font-data-sm text-data-sm text-coral-sand uppercase tracking-[0.2em] mb-3 block">Spesies 03</span>
+<h3 class="font-display-hero text-headline-md text-foam-white mb-4">Lumba-Lumba</h3>
+<div class="flex items-center gap-6 mb-6">
+<div class="flex flex-col">
+<span class="font-data-sm text-data-sm text-outline mb-1 uppercase">Tingkat Sosial</span>
+<span class="text-bioluminescence font-bold">Tinggi (Berkelompok)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-sm text-data-sm text-outline mb-1 uppercase">Kecerdasan</span>
+<span class="text-foam-white">Tier 1</span>
+</div>
+</div>
+<button onclick="openSpeciesModal('dolphin')" class="bg-bioluminescence text-abyss-ink px-6 py-3 rounded-[14px] font-bold text-sm tracking-wider flex items-center gap-2 group-hover:scale-105 transition-transform">
+BUKA DOSIER <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<!-- Identification + MIL modules -->
+<section class="px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-8 glass-card rounded-[40px] p-8 md:p-container-padding">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-12 h-12 rounded-xl bg-bioluminescence/20 flex items-center justify-center text-bioluminescence">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-foam-white">Panduan Identifikasi</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div>
+<h4 class="font-data-lg text-data-lg text-bioluminescence mb-4 uppercase tracking-tighter">Ciri Visual</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+Saat mengamati dari jarak jauh, perhatikan bentuk sirip dan pola napas di permukaan. Pada penyu, perhatikan bentuk tempurung dan corak sisiknya.
+</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-foam-white">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span>Bentuk sirip vs tempurung</span>
+</li>
+<li class="flex items-center gap-3 text-foam-white">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span>Tekstur &amp; corak kulit/kerapas</span>
+</li>
+</ul>
+</div>
+<div class="rounded-3xl border border-white/5 bg-ocean-navy/30 p-8">
+<div class="flex justify-between items-center mb-6">
+<span class="font-data-sm text-data-sm text-outline uppercase tracking-widest">AI Scanner Aktif</span>
+<span class="text-bioluminescence font-bold font-data-sm">98.4% Confidence</span>
+</div>
+<div class="space-y-4">
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-bioluminescence w-4/5"></div>
+</div>
+<p class="font-data-sm text-data-sm text-on-surface-variant leading-relaxed">
+Memindai foto untuk pola migrasi dan anomali anatomi...
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-8">
+<div class="glass-card rounded-[40px] p-8 border-l-4 border-l-coral-sand">
+<h3 class="font-data-lg text-data-lg text-foam-white mb-4">Status Konservasi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 italic">
+"Kita sedang kehilangan narasi laut dalam. Diam adalah ancaman terbesar bagi biodiversitas."
+</p>
+<div class="space-y-3">
+<div class="flex justify-between font-data-sm text-data-sm">
+<span class="text-outline">RISIKO GLOBAL</span>
+<span class="text-coral-sand">TINGGI</span>
+</div>
+<div class="w-full h-px bg-white/10"></div>
+<div class="flex justify-between font-data-sm text-data-sm">
+<span class="text-outline">TINGKAT PEMULIHAN</span>
+<span class="text-bioluminescence">+1.2% / TAHUN</span>
+</div>
+</div>
+</div>
+<div class="bg-bioluminescence rounded-[40px] p-8 text-abyss-ink relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 opacity-10 group-hover:rotate-12 transition-transform duration-500">
+<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'FILL' 1;">newspaper</span>
+</div>
+<span class="font-data-sm text-data-sm bg-abyss-ink/10 px-3 py-1 rounded-full uppercase font-bold mb-4 inline-block">MIL Education</span>
+<h3 class="font-headline-md text-[22px] leading-tight mb-4">Mengenali Hoaks Seputar Sains Kelautan</h3>
+<p class="font-body-md text-body-md mb-6 font-medium opacity-80">
+Belajar mengenali misinformasi dan video "penyelamatan" palsu yang justru merugikan ekosistem satwa liar.
+</p>
+<a class="inline-flex items-center gap-2 font-bold hover:underline" href="#mil-modules">
+MULAI MODUL <span class="material-symbols-outlined">trending_flat</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- MIL Modules -->
+<section id="mil-modules" class="px-margin-mobile md:px-margin-desktop mt-section-gap">
+<h2 class="font-headline-lg text-[26px] md:text-headline-lg text-foam-white mb-10">Media &amp; Information Literacy</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="glass-card rounded-[28px] p-6 hover:border-bioluminescence/30 border border-transparent transition-all">
+<span class="material-symbols-outlined text-bioluminescence text-3xl mb-4 block">verified</span>
+<h4 class="font-headline-md text-[18px] text-foam-white mb-2">Cara Verifikasi Informasi</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Langkah sederhana mengecek sumber sebelum menyebarkan berita konservasi.</p>
+</div>
+<div class="glass-card rounded-[28px] p-6 hover:border-bioluminescence/30 border border-transparent transition-all">
+<span class="material-symbols-outlined text-bioluminescence text-3xl mb-4 block">add_a_photo</span>
+<h4 class="font-headline-md text-[18px] text-foam-white mb-2">Cara Melapor yang Benar</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Panduan mengambil foto/video dan data yang membantu tim rescue bertindak cepat.</p>
+</div>
+<div class="glass-card rounded-[28px] p-6 hover:border-bioluminescence/30 border border-transparent transition-all">
+<span class="material-symbols-outlined text-bioluminescence text-3xl mb-4 block">rule</span>
+<h4 class="font-headline-md text-[18px] text-foam-white mb-2">Hoaks vs Fakta</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Contoh kasus misinformasi konservasi laut dan cara membantahnya dengan data.</p>
+</div>
+<div class="glass-card rounded-[28px] p-6 hover:border-bioluminescence/30 border border-transparent transition-all">
+<span class="material-symbols-outlined text-bioluminescence text-3xl mb-4 block">eco</span>
+<h4 class="font-headline-md text-[18px] text-foam-white mb-2">Tips Konservasi</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Kebiasaan kecil sehari-hari yang berdampak nyata bagi ekosistem pesisir.</p>
+</div>
+</div>
+</section>
+
+<!-- Stats -->
+<section class="px-margin-mobile md:px-margin-desktop mt-section-gap">
+<div class="glass-card rounded-[40px] p-8 md:p-container-padding flex flex-col md:flex-row justify-around items-center gap-10 text-center">
+<div>
+<span class="font-data-sm text-data-sm text-outline uppercase tracking-[0.3em] block mb-2">Observasi Tercatat</span>
+<span class="font-display-hero text-headline-md text-bioluminescence">14.2K</span>
+</div>
+<div class="w-px h-16 bg-white/10 hidden md:block"></div>
+<div>
+<span class="font-data-sm text-data-sm text-outline uppercase tracking-[0.3em] block mb-2">Spesies Terverifikasi</span>
+<span class="font-display-hero text-headline-md text-foam-white">3</span>
+</div>
+<div class="w-px h-16 bg-white/10 hidden md:block"></div>
+<div>
+<span class="font-data-sm text-data-sm text-outline uppercase tracking-[0.3em] block mb-2">Skor Dampak Global</span>
+<span class="font-display-hero text-headline-md text-secondary">A+</span>
+</div>
+</div>
+</section>
+</main>
+
+<!-- ===================================================================
+     SPECIES DOSSIER MODAL — materi Species/Habitat/Threats/Identification/Fun Facts
+     =================================================================== -->
+<div id="speciesModal" class="fixed inset-0 z-[100] hidden">
+<div class="absolute inset-0 bg-abyss-ink/90 backdrop-blur-sm" onclick="closeSpeciesModal()"></div>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<div class="glass-card bg-[#0c1f26] w-full max-w-3xl max-h-[88vh] rounded-[40px] overflow-hidden shadow-2xl flex flex-col">
+<div class="relative h-52 shrink-0">
+<img id="speciesModalImg" src="" alt="" class="absolute inset-0 w-full h-full object-cover">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0c1f26] via-[#0c1f26]/40 to-transparent"></div>
+<button onclick="closeSpeciesModal()" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-abyss-ink/70 flex items-center justify-center text-foam-white hover:bg-abyss-ink transition-all">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<div class="absolute bottom-5 left-8">
+<span id="speciesModalTag" class="font-data-sm text-data-sm text-coral-sand uppercase tracking-[0.2em] mb-1 block">Spesies</span>
+<h2 id="speciesModalTitle" class="font-display-hero text-headline-md text-foam-white">Nama Spesies</h2>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card rounded-2xl p-5">
+<span class="font-label-caps text-label-caps text-bioluminescence uppercase tracking-widest block mb-2">Habitat</span>
+<p id="speciesModalHabitat" class="font-body-md text-on-surface-variant"></p>
+</div>
+<div class="glass-card rounded-2xl p-5">
+<span class="font-label-caps text-label-caps text-coral-sand uppercase tracking-widest block mb-2">Ancaman (Threats)</span>
+<p id="speciesModalThreats" class="font-body-md text-on-surface-variant"></p>
+</div>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-bioluminescence uppercase tracking-widest block mb-2">Cara Identifikasi</span>
+<p id="speciesModalIdentification" class="font-body-md text-on-surface-variant leading-relaxed"></p>
+</div>
+<div class="bg-bioluminescence/10 border border-bioluminescence/30 rounded-2xl p-5">
+<span class="font-label-caps text-label-caps text-bioluminescence uppercase tracking-widest block mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">emoji_objects</span> Fun Facts
+</span>
+<ul id="speciesModalFunFacts" class="list-disc list-inside space-y-1 font-body-md text-foam-white"></ul>
+</div>
+
+<!-- Mini Quiz -->
+<div class="border-t border-white/10 pt-6">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">quiz</span> Uji Pemahamanmu
+</span>
+<p id="speciesModalQuizQuestion" class="font-body-md text-foam-white mb-4"></p>
+<div id="speciesModalQuizOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+<p id="speciesModalQuizFeedback" class="mt-3 font-data-sm text-data-sm hidden"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<a href="report.html" class="fixed bottom-8 right-8 w-16 h-16 md:w-20 md:h-20 bg-bioluminescence text-abyss-ink rounded-full shadow-[0_0_40px_rgba(92,255,209,0.4)] flex items-center justify-center z-50 group hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px] md:text-[32px]" style="font-variation-settings: 'FILL' 1;">add_photo_alternate</span>
+</a>
+
+<footer class="w-full py-section-gap px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8 bg-abyss-ink border-t border-white/5 relative z-10">
+<div class="flex flex-col items-center md:items-start gap-3">
+<div class="flex items-center gap-3">
+<img src="assets/images/flipoint-logo.png" alt="FLIPOINT" class="h-8 w-auto">
+<span class="font-display-hero text-headline-md text-foam-white">FLIPOINT</span>
+</div>
+<p class="font-body-md text-body-md text-outline-variant text-center md:text-left max-w-md">
+© 2026 FLIPOINT. Bermitra dengan Universitas Udayana &amp; TCEC Serangan.
+</p>
+</div>
+<div class="flex gap-8 md:gap-12">
+<a class="text-outline-variant hover:text-bioluminescence transition-colors font-body-md" href="about.html">About</a>
+<a class="text-outline-variant hover:text-bioluminescence transition-colors font-body-md" href="contact.html">Contact</a>
+<a class="text-outline-variant hover:text-bioluminescence transition-colors font-body-md" href="index.html">Home</a>
+</div>
+</footer>
+
+<script src="assets/js/auth-client.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+const SPECIES_DATA = {
+  turtle: {
+    tag: 'Spesies 01 — Reptil Laut',
+    title: 'Penyu Hijau',
+    image: 'assets/images/turtle.jpg',
+    habitat: 'Hidup di perairan dangkal tropis dan subtropis dekat garis pantai, terutama area padang lamun dan terumbu karang tempat mereka mencari makan. Betina dewasa kembali ke pantai kelahirannya untuk bertelur.',
+    threats: 'Terjerat jaring/sampah plastik, perburuan telur dan daging, kerusakan habitat pantai peneluran, serta tabrakan dengan kapal.',
+    identification: 'Bentuk tempurung oval halus berwarna coklat kehijauan dengan pola bercak. Kepala relatif kecil dibanding jenis penyu lain, dengan satu pasang sisik di antara mata. Sirip depan panjang menyerupai dayung.',
+    funFacts: [
+      'Penyu hijau bisa menahan napas hingga lebih dari 5 jam saat beristirahat di dasar laut.',
+      'Namanya berasal dari warna lemak tubuhnya yang kehijauan, bukan warna kulitnya.',
+      'Penyu betina bisa bertelur lebih dari 100 butir dalam satu sarang.'
+    ],
+    quiz: {
+      question: 'Kenapa penyu hijau disebut "hijau" padahal warna kulitnya coklat?',
+      options: ['Karena hidup di air hijau', 'Karena warna lemak tubuhnya kehijauan', 'Karena makan rumput laut hijau', 'Karena telurnya berwarna hijau'],
+      answerIndex: 1
+    }
+  },
+  whale: {
+    tag: 'Spesies 02 — Mamalia Laut',
+    title: 'Paus Bungkuk',
+    image: 'assets/images/whale.jpg',
+    habitat: 'Melakukan migrasi jauh antara perairan dingin tempat mencari makan dan perairan tropis hangat (termasuk jalur migrasi di sekitar Indonesia) untuk berkembang biak dan melahirkan.',
+    threats: 'Tabrakan dengan kapal besar, terjerat alat tangkap ikan, polusi suara bawah laut, dan perubahan iklim yang mengganggu sumber makanannya.',
+    identification: 'Tubuh besar dengan sirip dada sangat panjang (hingga sepertiga panjang tubuh), punggung membungkuk saat menyelam, serta pola ekor unik yang berbeda pada tiap individu — seperti "sidik jari".',
+    funFacts: [
+      'Paus bungkuk terkenal karena nyanyian kompleksnya yang bisa terdengar hingga puluhan kilometer.',
+      'Pola bawah ekornya unik seperti sidik jari, dipakai peneliti untuk mengenali individu.',
+      'Beratnya bisa mencapai sekitar 30 ton, seberat sekitar 5 ekor gajah dewasa.'
+    ],
+    quiz: {
+      question: 'Apa yang membuat peneliti bisa mengenali individu paus bungkuk yang berbeda?',
+      options: ['Warna matanya', 'Pola bawah ekornya', 'Suara napasnya', 'Ukuran siripnya'],
+      answerIndex: 1
+    }
+  },
+  dolphin: {
+    tag: 'Spesies 03 — Mamalia Laut',
+    title: 'Lumba-Lumba Hidung Botol',
+    image: 'assets/images/dolphin.jpg',
+    habitat: 'Hidup berkelompok (pod) di perairan pesisir hangat maupun laut lepas, sering terlihat mengikuti kapal nelayan atau bermain di dekat gelombang haluan kapal.',
+    threats: 'Terjerat jaring ikan (bycatch), polusi laut dan mikroplastik, penangkapan ilegal untuk atraksi, serta gangguan dari lalu lintas kapal wisata.',
+    identification: 'Tubuh abu-abu mengilap dengan moncong pendek menyerupai botol, sirip punggung melengkung khas, serta gerakan melompat yang lincah dan sering tampil berkelompok.',
+    funFacts: [
+      'Lumba-lumba menggunakan ekolokasi (sonar alami) untuk "melihat" di air keruh atau gelap.',
+      'Mereka punya nama panggilan unik berupa siulan (signature whistle) untuk mengenali sesama individu.',
+      'Satu kelompok (pod) bisa saling membantu merawat anggota yang terluka atau sakit.'
+    ],
+    quiz: {
+      question: 'Apa fungsi ekolokasi pada lumba-lumba?',
+      options: ['Untuk bernapas', 'Untuk "melihat" lewat gelombang suara', 'Untuk berenang lebih cepat', 'Untuk mengatur suhu tubuh'],
+      answerIndex: 1
+    }
+  }
+};
+
+function openSpeciesModal(key) {
+  const data = SPECIES_DATA[key];
+  if (!data) return;
+
+  document.getElementById('speciesModalImg').src = data.image;
+  document.getElementById('speciesModalImg').alt = data.title;
+  document.getElementById('speciesModalTag').textContent = data.tag;
+  document.getElementById('speciesModalTitle').textContent = data.title;
+  document.getElementById('speciesModalHabitat').textContent = data.habitat;
+  document.getElementById('speciesModalThreats').textContent = data.threats;
+  document.getElementById('speciesModalIdentification').textContent = data.identification;
+
+  const factsList = document.getElementById('speciesModalFunFacts');
+  factsList.innerHTML = '';
+  data.funFacts.forEach((fact) => {
+    const li = document.createElement('li');
+    li.textContent = fact;
+    factsList.appendChild(li);
+  });
+
+  // Render mini quiz
+  document.getElementById('speciesModalQuizQuestion').textContent = data.quiz.question;
+  const optionsWrap = document.getElementById('speciesModalQuizOptions');
+  const feedback = document.getElementById('speciesModalQuizFeedback');
+  feedback.classList.add('hidden');
+  optionsWrap.innerHTML = '';
+  data.quiz.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'py-3 px-4 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant text-sm font-medium text-left hover:border-bioluminescence/50 transition-all';
+    btn.textContent = opt;
+    btn.onclick = () => {
+      const isCorrect = idx === data.quiz.answerIndex;
+      feedback.classList.remove('hidden');
+      feedback.textContent = isCorrect ? '✅ Benar! +10 poin edukasi.' : '❌ Belum tepat, coba lagi lain waktu.';
+      feedback.className = 'mt-3 font-data-sm text-data-sm ' + (isCorrect ? 'text-bioluminescence' : 'text-error');
+      Array.from(optionsWrap.children).forEach((b) => (b.disabled = true));
+      if (isCorrect) {
+        btn.classList.add('border-bioluminescence', 'bg-bioluminescence/10', 'text-bioluminescence');
+      }
+    };
+    optionsWrap.appendChild(btn);
+  });
+
+  document.getElementById('speciesModal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSpeciesModal() {
+  document.getElementById('speciesModal').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+// Auto-buka modal jika diarahkan dari halaman lain, mis. learn.html?species=turtle
+(function autoOpenFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const species = params.get('species');
+  if (species && SPECIES_DATA[species]) {
+    openSpeciesModal(species);
+  }
+})();
+</script>
+</body>
+</html>

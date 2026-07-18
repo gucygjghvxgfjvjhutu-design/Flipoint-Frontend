@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FLIPOINT | Admin TCEC</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/js/tailwind-config.js"></script>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden lg:h-screen lg:overflow-hidden lg:flex">
+
+<aside class="hidden lg:flex w-20 bg-ocean-navy/40 backdrop-blur-md flex-col items-center py-10 z-40 border-r border-white/10 shrink-0">
+<a href="index.html" class="mb-12">
+<img src="assets/images/flipoint-logo.png" alt="FLIPOINT" class="h-8 w-8 object-contain">
+</a>
+<nav class="flex flex-col gap-8 flex-1">
+<div class="cursor-pointer group flex flex-col items-center gap-1">
+<div class="bg-bioluminescence text-on-primary rounded-full p-3 scale-110 shadow-[0_0_15px_rgba(92,255,209,0.5)] transition-all duration-500">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+<span class="font-label-caps text-[10px] text-bioluminescence opacity-60">DASH</span>
+</div>
+<div class="cursor-pointer group flex flex-col items-center gap-1">
+<div class="text-on-surface-variant/60 p-3 hover:text-bioluminescence hover:scale-110 transition-all duration-500">
+<span class="material-symbols-outlined">map</span>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">PETA</span>
+</div>
+<div class="cursor-pointer group flex flex-col items-center gap-1">
+<div class="text-on-surface-variant/60 p-3 hover:text-bioluminescence hover:scale-110 transition-all duration-500">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">TIM</span>
+</div>
+</nav>
+<a href="index.html" class="text-on-surface-variant/60 hover:text-foam-white transition-all">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</aside>
+
+<main class="flex-1 flex flex-col lg:overflow-hidden">
+<header class="h-20 bg-background/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-4 md:px-10 shrink-0 z-50">
+<div class="flex items-center gap-4 md:gap-8">
+<h1 class="font-display-hero text-[18px] md:text-headline-md tracking-tighter text-bioluminescence flex items-center gap-2">FLIPOINT <span class="font-label-caps text-label-caps text-on-surface-variant opacity-50 tracking-widest hidden sm:inline">ADMIN</span></h1>
+<img src="assets/images/tcec-logo.jpg" alt="TCEC Serangan" class="h-9 w-9 rounded-full object-cover border border-white/10 hidden sm:block">
+<div class="hidden lg:flex items-center gap-6">
+<span class="font-data-sm text-data-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-bioluminescence text-sm">location_on</span> BALI, ID
+</span>
+<span class="font-data-sm text-data-sm text-on-surface-variant flex items-center gap-2">
+<span class="sonar-ping w-2 h-2 rounded-full bg-bioluminescence inline-block"></span> 8 PATROLI AKTIF
+</span>
+</div>
+</div>
+<div class="flex items-center gap-4 md:gap-6">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-bioluminescence cursor-pointer transition-all">notifications</span>
+<button class="bg-bioluminescence/10 border border-bioluminescence/30 text-bioluminescence px-4 md:px-6 py-2 rounded-full font-label-caps text-label-caps hover:bg-bioluminescence hover:text-on-primary transition-all duration-300 text-xs md:text-sm">
+EXPORT DATA
+</button>
+</div>
+</header>
+
+<div class="flex-1 lg:overflow-y-auto p-4 md:p-10 space-y-8 md:space-y-10">
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+<div class="glass-panel p-5 md:p-6 rounded-[24px] flex flex-col justify-between h-28 md:h-32">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TOTAL RESCUE</span>
+<div class="flex items-baseline justify-between">
+<span class="font-data-lg text-data-lg text-foam-white">284</span>
+<span class="text-bioluminescence text-xs font-data-sm">+12% ↑</span>
+</div>
+</div>
+<div class="glass-panel p-5 md:p-6 rounded-[24px] flex flex-col justify-between h-28 md:h-32">
+<span class="font-label-caps text-label-caps text-on-surface-variant">RATA-RATA RESPONS</span>
+<div class="flex items-baseline justify-between">
+<span class="font-data-lg text-data-lg text-foam-white">18m 42s</span>
+<span class="text-bioluminescence text-xs font-data-sm">-4m ↓</span>
+</div>
+</div>
+<div class="glass-panel p-5 md:p-6 rounded-[24px] flex flex-col justify-between h-28 md:h-32">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AKURASI ID SPESIES</span>
+<div class="flex items-baseline justify-between">
+<span class="font-data-lg text-data-lg text-foam-white">98.4%</span>
+<span class="text-coral-sand text-xs font-data-sm">OPTIMAL</span>
+</div>
+</div>
+<div class="glass-panel p-5 md:p-6 rounded-[24px] flex flex-col justify-between h-28 md:h-32">
+<span class="font-label-caps text-label-caps text-on-surface-variant">RELAWAN AKTIF</span>
+<div class="flex items-baseline justify-between">
+<span class="font-data-lg text-data-lg text-foam-white">42</span>
+<span class="text-bioluminescence text-xs font-data-sm">+3 BARU</span>
+</div>
+</div>
+</section>
+
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-1 glass-panel rounded-[32px] overflow-hidden flex flex-col h-[500px] lg:h-[600px]">
+<div class="p-6 border-b border-white/5 flex justify-between items-center">
+<h3 class="font-headline-md text-[18px] md:text-headline-md text-foam-white flex items-center gap-3">
+<span class="material-symbols-outlined text-bioluminescence">leak_add</span> Live Feed
+</h3>
+<span class="font-data-sm text-data-sm text-bioluminescence">REAL-TIME</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<div class="bg-surface-container-low/50 border border-white/5 rounded-2xl p-4 hover:border-bioluminescence/20 transition-all cursor-pointer group">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" src="assets/images/turtle.jpg" alt="Penyu">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-xs text-bioluminescence">AI TERKENALI</span>
+<span class="font-data-sm text-[10px] text-on-surface-variant">2M LALU</span>
+</div>
+<h4 class="font-body-lg text-foam-white font-semibold">Penyu Hijau</h4>
+<p class="text-on-surface-variant text-xs mt-1">Lokasi: Pantai Serangan</p>
+<div class="mt-2 flex items-center gap-2">
+<div class="h-1 flex-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-bioluminescence w-[94%]"></div>
+</div>
+<span class="font-data-sm text-[10px] text-bioluminescence">94% CONF.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low/50 border border-white/5 rounded-2xl p-4 hover:border-coral-sand/20 transition-all cursor-pointer group">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" src="assets/images/dolphin.jpg" alt="Lumba-lumba">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-xs text-coral-sand">PANGGILAN MENDESAK</span>
+<span class="font-data-sm text-[10px] text-on-surface-variant">15M LALU</span>
+</div>
+<h4 class="font-body-lg text-foam-white font-semibold">Lumba-lumba Terjerat</h4>
+<p class="text-on-surface-variant text-xs mt-1">Nusa Dua - Titik Selatan</p>
+<button class="mt-3 w-full border border-coral-sand/30 text-coral-sand text-[10px] font-label-caps py-1 rounded hover:bg-coral-sand hover:text-on-tertiary transition-colors">KIRIM TIM</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low/50 border border-white/5 rounded-2xl p-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" src="assets/images/whale.jpg" alt="Paus">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-xs text-on-surface-variant">TELEMETRI</span>
+<span class="font-data-sm text-[10px] text-on-surface-variant">45M LALU</span>
+</div>
+<h4 class="font-body-lg text-foam-white font-semibold">Paus Terpantau</h4>
+<p class="text-on-surface-variant text-xs mt-1">Selat Lombok</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="lg:col-span-2 glass-panel rounded-[32px] overflow-hidden relative group">
+<div class="absolute top-6 left-6 z-10 flex flex-col gap-2">
+<div class="bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-bioluminescence text-sm">filter_alt</span>
+<span class="font-label-caps text-xs text-foam-white">HEATMAP: DENSITAS AKTIVITAS</span>
+</div>
+</div>
+<div class="w-full h-[400px] lg:h-full min-h-[400px] relative bg-abyss-ink">
+<iframe id="adminMapFrame" class="absolute inset-0 w-full h-full grayscale-[20%] contrast-[1.1]" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-8.7231,115.2346&z=12&output=embed"></iframe>
+<div class="absolute inset-0 bg-abyss-ink/30 pointer-events-none"></div>
+<div class="absolute top-[55%] left-[45%] sonar-ping w-4 h-4 rounded-full bg-bioluminescence shadow-[0_0_20px_#5CFFD1] pointer-events-none"></div>
+<div class="absolute top-[65%] left-[55%] sonar-ping w-3 h-3 rounded-full bg-bioluminescence opacity-60 pointer-events-none"></div>
+<div class="absolute top-[40%] left-[25%] sonar-ping w-6 h-6 rounded-full bg-coral-sand shadow-[0_0_20px_#F4C66A] pointer-events-none"></div>
+<div class="absolute bottom-6 right-6 z-10">
+<div class="glass-panel p-4 rounded-2xl flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-bioluminescence"></div>
+<span class="font-data-sm text-[10px] text-on-surface-variant">LAPORAN (TINGGI)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-coral-sand"></div>
+<span class="font-data-sm text-[10px] text-on-surface-variant">OPERASI RESCUE (AKTIF)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="glass-panel rounded-[32px] overflow-hidden">
+<div class="p-6 md:p-8 border-b border-white/5 flex flex-col md:flex-row justify-between md:items-center gap-4">
+<div>
+<h3 class="font-headline-md text-[18px] md:text-headline-md text-foam-white">Deployment Relawan</h3>
+<p class="text-on-surface-variant font-body-md">Status real-time relawan dan responder ilmiah.</p>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left min-w-[600px]">
+<thead>
+<tr class="border-b border-white/5 bg-white/[0.02]">
+<th class="px-6 md:px-8 py-4 font-label-caps text-label-caps text-on-surface-variant">RELAWAN</th>
+<th class="px-6 md:px-8 py-4 font-label-caps text-label-caps text-on-surface-variant">SPESIALISASI</th>
+<th class="px-6 md:px-8 py-4 font-label-caps text-label-caps text-on-surface-variant">LOKASI</th>
+<th class="px-6 md:px-8 py-4 font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+</tr>
+</thead>
+<tbody class="font-data-sm text-sm">
+<tr class="border-b border-white/5 hover:bg-white/[0.01] transition-colors">
+<td class="px-6 md:px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-deep-current flex items-center justify-center font-bold text-bioluminescence text-[10px]">DA</div>
+<span class="font-body-md text-foam-white font-medium">drh. Made Astawa</span>
+</div>
+</td>
+<td class="px-6 md:px-8 py-4 text-on-surface-variant">Dokter Hewan</td>
+<td class="px-6 md:px-8 py-4 text-on-surface-variant">Sanur [Sektor 4]</td>
+<td class="px-6 md:px-8 py-4"><span class="px-3 py-1 rounded-full bg-bioluminescence/10 text-bioluminescence text-[10px] font-label-caps">BERTUGAS</span></td>
+</tr>
+<tr class="border-b border-white/5 hover:bg-white/[0.01] transition-colors">
+<td class="px-6 md:px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-ocean-navy flex items-center justify-center font-bold text-bioluminescence text-[10px]">SC</div>
+<span class="font-body-md text-foam-white font-medium">Sylvia Cousteau</span>
+</div>
+</td>
+<td class="px-6 md:px-8 py-4 text-on-surface-variant">Pilot Drone</td>
+<td class="px-6 md:px-8 py-4 text-on-surface-variant">Basecamp Denpasar</td>
+<td class="px-6 md:px-8 py-4"><span class="px-3 py-1 rounded-full bg-white/10 text-on-surface-variant text-[10px] font-label-caps">STANDBY</span></td>
+</tr>
+<tr class="hover:bg-white/[0.01] transition-colors">
+<td class="px-6 md:px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-error-container/20 flex items-center justify-center font-bold text-error text-[10px]">KE</div>
+<span class="font-body-md text-foam-white font-medium">Kadek Eka</span>
+</div>
+</td>
+<td class="px-6 md:px-8 py-4 text-on-surface-variant">Penyelam Rescue</td>
+<td class="px-6 md:px-8 py-4 text-on-surface-variant">Uluwatu [Sektor 9]</td>
+<td class="px-6 md:px-8 py-4"><span class="px-3 py-1 rounded-full bg-error/10 text-error text-[10px] font-label-caps">DARURAT</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+
+<footer class="h-12 bg-surface-container-lowest border-t border-white/5 px-4 md:px-10 flex justify-between items-center shrink-0 z-50">
+<p class="font-data-sm text-[10px] text-on-surface-variant/50">© 2026 FLIPOINT — TCEC Serangan</p>
+<a href="index.html" class="font-data-sm text-[10px] text-on-surface-variant/50 hover:text-bioluminescence transition-colors">KEMBALI KE SITUS UTAMA</a>
+</footer>
+</main>
+
+<script src="assets/js/auth-client.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

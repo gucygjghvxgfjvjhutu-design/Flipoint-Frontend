@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FLIPOINT | Buat Akun</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/js/tailwind-config.js"></script>
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .abyss-gradient { background: radial-gradient(circle at top right, #0F4C5C 0%, #081C24 45%, #050E12 100%); }
+  .bioluminescent-pulse { box-shadow: 0 0 20px rgba(92, 255, 209, 0.2); transition: all 0.5s ease; }
+  .bioluminescent-pulse:hover { box-shadow: 0 0 40px rgba(92, 255, 209, 0.5); transform: translateY(-2px); }
+</style>
+</head>
+<body class="bg-abyss-ink text-foam-white font-body-md selection:bg-bioluminescence selection:text-abyss-ink">
+
+<div class="fixed inset-0 abyss-gradient z-0" id="particle-container"></div>
+
+<a href="index.html" class="fixed top-6 left-6 z-20 flex items-center gap-3">
+<img src="assets/images/flipoint-logo.png" alt="FLIPOINT" class="h-9 w-auto">
+<span class="font-display-hero text-headline-md text-bioluminescence hidden sm:inline">FLIPOINT</span>
+</a>
+
+<main class="relative z-10 flex min-h-screen items-center justify-center px-margin-mobile md:px-margin-desktop py-24">
+<div class="w-full max-w-[560px] glass-card rounded-card p-8 md:p-14 shadow-2xl relative overflow-hidden">
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-bioluminescence/10 rounded-full blur-[80px]"></div>
+<div class="absolute -bottom-24 -left-24 w-48 h-48 bg-ocean-emerald/20 rounded-full blur-[80px]"></div>
+<div class="relative z-20 flex flex-col items-center">
+<div class="mb-8 text-center">
+<img alt="FLIPOINT Logo" class="h-14 w-auto mb-6 mx-auto" src="assets/images/flipoint-logo.png">
+<h1 class="font-headline-md text-[22px] md:text-headline-md text-foam-white tracking-tight">Buat Akun Penjaga Laut</h1>
+<p class="text-on-surface-variant font-body-md mt-2 opacity-80">Daftar untuk mulai melapor, belajar, dan mengumpulkan poin konservasi.</p>
+</div>
+<form class="w-full space-y-6" id="registerForm" onsubmit="handleRegister(event)">
+<div class="relative floating-label-input">
+<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-foam-white focus:outline-none focus:border-bioluminescence/50 focus:ring-0 transition-all font-body-md" id="fullname" placeholder=" " type="text" required>
+<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all origin-top-left" for="fullname">Nama Lengkap</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="relative floating-label-input">
+<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-foam-white focus:outline-none focus:border-bioluminescence/50 focus:ring-0 transition-all font-body-md" id="whatsapp" placeholder=" " type="tel" pattern="[0-9+ ]{8,15}" required>
+<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all origin-top-left" for="whatsapp">Nomor WhatsApp</label>
+</div>
+<div class="relative floating-label-input">
+<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-foam-white focus:outline-none focus:border-bioluminescence/50 focus:ring-0 transition-all font-body-md" id="reg-email" placeholder=" " type="email" required>
+<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all origin-top-left" for="reg-email">Email</label>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="relative floating-label-input md:col-span-1">
+<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-foam-white focus:outline-none focus:border-bioluminescence/50 focus:ring-0 transition-all font-body-md" id="origin" placeholder=" " type="text" required>
+<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all origin-top-left" for="origin">Asal Kota</label>
+</div>
+<div class="relative floating-label-input">
+<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-foam-white focus:outline-none focus:border-bioluminescence/50 focus:ring-0 transition-all font-body-md" id="age" placeholder=" " type="number" min="13" max="100" required>
+<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all origin-top-left" for="age">Umur</label>
+</div>
+<div class="relative">
+<label class="block text-on-surface-variant text-xs uppercase tracking-widest mb-2 font-label-caps">Jenis Kelamin</label>
+<select class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-foam-white focus:outline-none focus:border-bioluminescence/50 focus:ring-0 transition-all font-body-md appearance-none" id="gender" required>
+<option value="" disabled selected class="bg-abyss-ink">Pilih</option>
+<option value="L" class="bg-abyss-ink">Laki-laki</option>
+<option value="P" class="bg-abyss-ink">Perempuan</option>
+<option value="R" class="bg-abyss-ink">Tidak ingin menyebutkan</option>
+</select>
+</div>
+</div>
+<div class="relative floating-label-input">
+<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-foam-white focus:outline-none focus:border-bioluminescence/50 focus:ring-0 transition-all font-body-md" id="reg-password" placeholder=" " type="password" minlength="8" required>
+<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all origin-top-left" for="reg-password">Password (min. 8 karakter)</label>
+</div>
+<label class="flex items-start gap-3 text-data-sm text-on-surface-variant cursor-pointer">
+<input type="checkbox" required class="mt-1 w-4 h-4 rounded border-white/20 bg-transparent text-bioluminescence focus:ring-bioluminescence/20">
+<span>Saya menyetujui <a href="#" class="text-bioluminescence hover:underline">Kebijakan Privasi</a> FLIPOINT dan data saya digunakan untuk keperluan verifikasi laporan.</span>
+</label>
+<div id="registerError" class="hidden text-sm text-error bg-error/10 border border-error/30 rounded-xl px-4 py-3"></div>
+<button class="w-full py-5 bg-bioluminescence text-on-secondary font-label-caps tracking-widest rounded-xl bioluminescent-pulse uppercase transition-all flex items-center justify-center space-x-2 group" type="submit" id="registerSubmitBtn">
+<span id="registerSubmitLabel">Buat Akun</span>
+<span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<p class="mt-8 font-data-sm text-on-surface-variant">
+Sudah punya akun?
+<a class="text-bioluminescence hover:underline underline-offset-4 decoration-bioluminescence/30" href="login.html">Masuk di sini</a>
+</p>
+</div>
+</div>
+</main>
+
+<script src="assets/js/auth-client.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+async function handleRegister(e) {
+  e.preventDefault();
+  const errorBox = document.getElementById('registerError');
+  const submitBtn = document.getElementById('registerSubmitBtn');
+  const submitLabel = document.getElementById('registerSubmitLabel');
+
+  const payload = {
+    fullName: document.getElementById('fullname').value.trim(),
+    whatsapp: document.getElementById('whatsapp').value.trim(),
+    email: document.getElementById('reg-email').value.trim(),
+    origin: document.getElementById('origin').value.trim(),
+    age: document.getElementById('age').value,
+    gender: document.getElementById('gender').value,
+    password: document.getElementById('reg-password').value
+  };
+
+  errorBox.classList.add('hidden');
+  submitBtn.disabled = true;
+  submitLabel.textContent = 'Memproses...';
+
+  try {
+    const data = await flipointApiFetch('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+    flipointSaveSession(data.token, data.user);
+    window.location.href = 'profile.html';
+  } catch (err) {
+    errorBox.textContent = err.message || 'Pendaftaran gagal, atau server tidak dapat dihubungi.';
+    errorBox.classList.remove('hidden');
+    submitBtn.disabled = false;
+    submitLabel.textContent = 'Buat Akun';
+  }
+}
+
+if (typeof flipointIsLoggedIn === 'function' && flipointIsLoggedIn()) {
+  window.location.href = 'profile.html';
+}
+</script>
+</body>
+</html>

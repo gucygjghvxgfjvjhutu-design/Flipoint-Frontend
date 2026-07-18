@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FLIPOINT | Lindungi Satwa Laut Bali</title>
+<meta name="description" content="FLIPOINT — platform citizen science untuk melapor, belajar, dan melindungi penyu, paus, dan lumba-lumba di pesisir Bali.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/js/tailwind-config.js"></script>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="font-body-md text-body-md selection:bg-bioluminescence selection:text-abyss-ink">
+
+<!-- Ambient particles -->
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none" id="particle-container"></div>
+
+<!-- Top Navigation -->
+<header id="siteNav" class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 px-margin-mobile md:px-margin-desktop py-6 flex justify-between items-center transition-all duration-500">
+<a href="index.html" class="flex items-center gap-3">
+<img src="assets/images/flipoint-logo.png" alt="FLIPOINT" class="h-10 w-auto">
+<span class="font-display-hero text-headline-md font-bold text-foam-white tracking-tight">FLIPOINT</span>
+</a>
+<nav class="hidden md:flex gap-10 items-center">
+<a href="index.html" class="nav-link active font-label-caps text-label-caps">Home</a>
+<a href="learn.html" class="nav-link text-foam-white/70 hover:text-foam-white transition-colors font-label-caps text-label-caps">Learn</a>
+<a href="about.html" class="nav-link text-foam-white/70 hover:text-foam-white transition-colors font-label-caps text-label-caps">About Us</a>
+<a href="contact.html" class="nav-link text-foam-white/70 hover:text-foam-white transition-colors font-label-caps text-label-caps">Contact Us</a>
+</nav>
+<div class="flex items-center gap-3">
+<a href="report.html" class="hidden sm:inline-flex bg-bioluminescence text-abyss-ink px-5 py-2.5 rounded-full font-bold font-label-caps text-label-caps bioluminescent-glow transition-all">Report</a>
+<a href="login.html" class="js-profile-link bg-white/5 border border-white/10 text-foam-white px-5 py-2.5 rounded-full font-label-caps text-label-caps hover:bg-white/10 transition-all">Profile</a>
+<button id="mobileNavToggle" class="md:hidden text-foam-white"><span class="material-symbols-outlined">menu</span></button>
+</div>
+</header>
+
+<!-- Mobile Nav -->
+<div id="mobileNavMenu" class="hidden fixed top-[76px] left-0 w-full bg-abyss-ink/95 backdrop-blur-xl z-40 md:hidden flex flex-col p-8 gap-6 border-b border-white/10">
+<a href="index.html" class="text-bioluminescence font-bold">Home</a>
+<a href="report.html" class="text-foam-white/80">Report</a>
+<a href="learn.html" class="text-foam-white/80">Learn</a>
+<a href="about.html" class="text-foam-white/80">About Us</a>
+<a href="contact.html" class="text-foam-white/80">Contact Us</a>
+<a href="login.html" class="js-profile-link text-foam-white/80">Profile</a>
+</div>
+
+<!-- Depth Gauge Side Nav -->
+<aside class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 z-40 hidden md:flex flex-col items-center space-y-6">
+<span class="font-data-sm text-data-sm text-bioluminescence tracking-widest uppercase [writing-mode:vertical-rl] mb-6">0m — Sunlight Zone</span>
+<div class="flex flex-col items-center space-y-6">
+<div class="text-bioluminescence scale-125 material-symbols-outlined cursor-pointer transition-all">water_drop</div>
+<a href="report.html" class="text-outline opacity-40 hover:opacity-100 transition-opacity material-symbols-outlined cursor-pointer">waves</a>
+<a href="learn.html" class="text-outline opacity-40 hover:opacity-100 transition-opacity material-symbols-outlined cursor-pointer">dark_mode</a>
+</div>
+</aside>
+
+<main class="relative z-10">
+<!-- Hero Section -->
+<section class="relative min-h-screen w-full flex items-center px-margin-mobile md:px-margin-desktop overflow-hidden pt-32 md:pt-0">
+<div class="absolute inset-0 z-0">
+<img alt="Penyu hijau berenang di perairan Bali" class="w-full h-full object-cover" src="assets/images/turtle.jpg">
+<div class="absolute inset-0 bg-gradient-to-r from-abyss-ink/95 via-abyss-ink/75 to-abyss-ink/30"></div>
+</div>
+<div class="relative z-10 max-w-3xl">
+<div class="flex items-center space-x-4 mb-8">
+<span class="w-12 h-[1px] bg-bioluminescence"></span>
+<span class="font-label-caps text-label-caps text-bioluminescence uppercase tracking-widest">Inisiatif Konservasi Bersama Universitas Udayana</span>
+</div>
+<h1 class="font-display-hero text-[42px] md:text-display-hero text-foam-white mb-6 leading-tight">
+Lindungi Satwa Laut <br><span class="text-bioluminescence italic">Bali.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-foam-white/70 mb-10 max-w-xl">
+Scan QR code di sepanjang pantai Bali untuk belajar, melaporkan penyu, paus, atau lumba-lumba yang terdampar, dan kumpulkan poin konservasi.
+</p>
+<div class="flex flex-wrap gap-4 items-center">
+<a href="report.html" class="bg-bioluminescence text-abyss-ink px-8 py-4 md:px-10 md:py-5 rounded-[14px] font-bold font-label-caps text-label-caps transition-all bioluminescent-glow hover:-translate-y-0.5 active:translate-y-0 inline-block">
+SCAN QR CODE
+</a>
+<a href="learn.html" class="px-8 py-4 md:px-10 md:py-5 rounded-[14px] border border-white/20 backdrop-blur-md text-foam-white font-bold font-label-caps text-label-caps transition-all hover:bg-white/5 inline-block">
+LEARN MORE
+</a>
+</div>
+<!-- Floating Stats Panel -->
+<div class="mt-16 glass-panel rounded-[32px] p-6 md:p-8 max-w-xl grid grid-cols-3 gap-6 md:gap-12 shadow-2xl">
+<div class="flex flex-col">
+<span class="font-data-lg text-data-lg text-bioluminescence mb-1">1.248</span>
+<span class="font-label-caps text-[10px] md:text-label-caps text-outline uppercase">Total Laporan</span>
+</div>
+<div class="flex flex-col border-l border-white/10 pl-6 md:pl-12">
+<span class="font-data-lg text-data-lg text-bioluminescence mb-1">482</span>
+<span class="font-label-caps text-[10px] md:text-label-caps text-outline uppercase">Satwa Terselamatkan</span>
+</div>
+<div class="flex flex-col border-l border-white/10 pl-6 md:pl-12">
+<span class="font-data-lg text-data-lg text-bioluminescence mb-1">94%</span>
+<span class="font-label-caps text-[10px] md:text-label-caps text-outline uppercase">Success Rate</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Why FLIPOINT / Campaign Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-abyss-ink">
+<div class="max-w-3xl mb-16">
+<span class="font-label-caps text-label-caps text-bioluminescence uppercase tracking-widest mb-4 block">Mengapa FLIPOINT?</span>
+<h2 class="font-headline-lg text-[28px] md:text-headline-lg text-foam-white mb-6 italic">Bukan sekadar website pelaporan.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+FLIPOINT menggabungkan <strong class="text-foam-white">citizen science</strong>, <strong class="text-foam-white">Media and Information Literacy (MIL)</strong>, dan <strong class="text-foam-white">gamifikasi</strong> agar masyarakat Bali tidak hanya melapor, tapi juga belajar mengenali informasi yang benar seputar konservasi satwa laut — selaras dengan prinsip UNESCO MIL.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-panel rounded-[32px] p-8">
+<span class="material-symbols-outlined text-bioluminescence text-4xl mb-4 block">groups</span>
+<h3 class="font-headline-md text-[20px] text-foam-white mb-2">Citizen Science</h3>
+<p class="text-on-surface-variant font-body-md">Setiap laporan warga membantu tim TCEC merespons lebih cepat dan membangun data konservasi yang nyata.</p>
+</div>
+<div class="glass-panel rounded-[32px] p-8">
+<span class="material-symbols-outlined text-bioluminescence text-4xl mb-4 block">fact_check</span>
+<h3 class="font-headline-md text-[20px] text-foam-white mb-2">Media &amp; Information Literacy</h3>
+<p class="text-on-surface-variant font-body-md">Belajar membedakan fakta dan hoaks seputar satwa laut lewat modul edukasi singkat.</p>
+</div>
+<div class="glass-panel rounded-[32px] p-8">
+<span class="material-symbols-outlined text-bioluminescence text-4xl mb-4 block">emoji_events</span>
+<h3 class="font-headline-md text-[20px] text-foam-white mb-2">Gamifikasi</h3>
+<p class="text-on-surface-variant font-body-md">Kumpulkan poin dari setiap laporan dan kuis, naik level dari Bronze hingga Platinum.</p>
+</div>
+</div>
+</section>
+
+<!-- Featured Marine Species -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-abyss-ink relative">
+<div class="flex flex-col md:flex-row justify-between md:items-end mb-16 gap-4">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-[28px] md:text-headline-lg text-foam-white mb-4 italic">Warisan Laut Bali</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Tiga satwa laut yang menjadi fokus utama FLIPOINT — kenali ciri-cirinya di halaman Learn.</p>
+</div>
+<a href="learn.html" class="font-label-caps text-label-caps text-bioluminescence uppercase tracking-widest hover:underline whitespace-nowrap">Lihat Selengkapnya →</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<a href="learn.html?species=dolphin" class="md:col-span-7 group relative h-[400px] md:h-[500px] rounded-[40px] overflow-hidden block cursor-pointer">
+<img alt="Lumba-lumba hidung botol" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/images/dolphin.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-8 left-8 right-8 flex justify-between items-end">
+<div>
+<span class="font-data-sm text-data-sm text-bioluminescence mb-2 block uppercase tracking-widest">Spesies Aktif</span>
+<h3 class="font-headline-md text-headline-md text-foam-white">Lumba-Lumba</h3>
+</div>
+<div class="sonar-ping w-12 h-12 flex items-center justify-center bg-bioluminescence rounded-full text-abyss-ink shrink-0">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+</div>
+</a>
+<div class="md:col-span-5 flex flex-col gap-gutter">
+<a href="learn.html?species=turtle" class="group relative h-[238px] rounded-[40px] overflow-hidden block cursor-pointer">
+<img alt="Penyu hijau" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/images/turtle.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink/70 to-transparent"></div>
+<div class="absolute bottom-6 left-8">
+<h4 class="font-headline-md text-foam-white text-2xl">Penyu</h4>
+<span class="font-label-caps text-label-caps text-coral-sand uppercase">Terancam Punah</span>
+</div>
+</a>
+<a href="learn.html?species=whale" class="group relative h-[238px] rounded-[40px] overflow-hidden block cursor-pointer">
+<img alt="Paus bungkuk" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/images/whale.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink/70 to-transparent"></div>
+<div class="absolute bottom-6 left-8">
+<h4 class="font-headline-md text-foam-white text-2xl">Paus</h4>
+<span class="font-label-caps text-label-caps text-sunlight-blue uppercase">Migrasi</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Partners strip -->
+<section class="px-margin-mobile md:px-margin-desktop pb-section-gap">
+<div class="glass-panel rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-around gap-10 text-center">
+<div class="flex flex-col items-center gap-3">
+<img src="assets/images/unud-logo.png" alt="Universitas Udayana" class="h-16 w-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Universitas Udayana</span>
+</div>
+<div class="flex flex-col items-center gap-3">
+<div class="h-16 w-16 rounded-full bg-white flex items-center justify-center p-2 overflow-hidden">
+<img src="assets/images/tcec-logo.jpg" alt="TCEC Serangan" class="w-full h-full object-cover rounded-full">
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">TCEC Serangan</span>
+</div>
+<div class="flex flex-col items-center gap-3">
+<div class="h-16 flex items-center justify-center bg-white rounded-lg px-3">
+<img src="assets/images/unesco-logo.png" alt="UNESCO" class="h-10 w-auto object-contain">
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">UNESCO MIL</span>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Signature FAB -->
+<a href="report.html" class="fixed bottom-8 right-8 w-16 h-16 md:w-20 md:h-20 bg-bioluminescence rounded-full z-50 flex flex-col items-center justify-center shadow-2xl transition-all hover:scale-110 group sonar-ping">
+<span class="material-symbols-outlined text-abyss-ink text-2xl md:text-3xl font-bold">sos</span>
+<span class="text-[8px] font-bold text-abyss-ink mt-1 font-label-caps tracking-tighter">REPORT</span>
+</a>
+
+<!-- Footer -->
+<footer class="bg-abyss-ink border-t border-outline-variant/20 pt-section-gap pb-16 px-margin-mobile md:px-margin-desktop relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3 mb-6">
+<img src="assets/images/flipoint-logo.png" alt="FLIPOINT" class="h-9 w-auto">
+<span class="font-headline-md text-headline-md text-foam-white font-bold tracking-tight">FLIPOINT</span>
+</div>
+<p class="text-on-surface-variant font-body-md max-w-md mb-8">
+Platform digital konservasi yang memadukan sains kelautan, literasi media, dan partisipasi warga untuk menjaga biodiversitas laut Bali.
+</p>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-foam-white mb-6 uppercase tracking-widest">Navigasi</h5>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-bioluminescence transition-colors font-body-md" href="learn.html">Learn</a></li>
+<li><a class="text-on-surface-variant hover:text-bioluminescence transition-colors font-body-md" href="about.html">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-bioluminescence transition-colors font-body-md" href="contact.html">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-foam-white mb-6 uppercase tracking-widest">Akun</h5>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-bioluminescence transition-colors font-body-md" href="login.html">Login</a></li>
+<li><a class="text-on-surface-variant hover:text-bioluminescence transition-colors font-body-md" href="register.html">Daftar</a></li>
+<li><a class="text-on-surface-variant hover:text-bioluminescence transition-colors font-body-md" href="admin.html">Admin TCEC</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-outline text-[12px] font-label-caps gap-4">
+<p>© 2026 FLIPOINT Conservation. Bermitra dengan Universitas Udayana &amp; TCEC Serangan.</p>
+<div class="flex gap-8">
+<span class="flex items-center"><span class="w-2 h-2 rounded-full bg-bioluminescence mr-2"></span>Sistem Aktif</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-[14px] mr-1">location_on</span>Denpasar, Bali</span>
+</div>
+</div>
+</footer>
+
+<script src="assets/js/auth-client.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

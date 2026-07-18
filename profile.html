@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FLIPOINT | Dashboard Penjaga Laut</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/js/tailwind-config.js"></script>
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .biolume-glow { box-shadow: 0 0 30px rgba(92, 255, 209, 0.2); }
+</style>
+</head>
+<body class="font-body-md text-body-md antialiased">
+
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-ocean-navy/20 via-abyss-ink to-surface-container-lowest"></div>
+</div>
+
+<header id="siteNav" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-surface/10 backdrop-blur-xl border-b border-foam-white/10">
+<a href="index.html" class="font-display-hero text-headline-md font-bold text-bioluminescence tracking-tight flex items-center gap-3">
+<img src="assets/images/flipoint-logo.png" alt="FLIPOINT" class="h-9 w-auto">FLIPOINT
+</a>
+<nav class="hidden md:flex gap-10">
+<a class="font-body-md text-on-surface-variant hover:text-foam-white transition-colors" href="index.html">Home</a>
+<a class="font-body-md text-on-surface-variant hover:text-foam-white transition-colors" href="learn.html">Learn</a>
+<a class="font-body-md text-on-surface-variant hover:text-foam-white transition-colors" href="about.html">About</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="text-bioluminescence font-bold border-b-2 border-bioluminescence pb-1 font-body-md">Profile</div>
+<a href="#" id="logoutLink" onclick="handleLogout(event)" class="text-on-surface-variant hover:text-foam-white text-sm hidden sm:inline">Keluar</a>
+</div>
+</header>
+
+<aside class="fixed right-4 top-1/2 -translate-y-1/2 w-16 z-40 hidden lg:flex flex-col items-center py-8 gap-10 bg-ocean-navy/40 backdrop-blur-md border-l border-white/5 rounded-l-full shadow-2xl">
+<div class="text-coral-sand font-data-sm text-data-sm mb-2 [writing-mode:vertical-rl]">DEPTH</div>
+<a href="report.html" class="flex flex-col items-center justify-center text-outline opacity-50 hover:opacity-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined">waves</span>
+<span class="font-data-sm text-data-sm mt-1">600m</span>
+</a>
+<div class="flex flex-col items-center justify-center text-bioluminescence scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">scuba_diving</span>
+<span class="font-data-sm text-data-sm mt-1 font-bold">900m</span>
+</div>
+</aside>
+
+<main class="relative z-10 pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<div id="guestBanner" class="hidden mb-10 glass-panel rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4 border border-coral-sand/30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-coral-sand">lock</span>
+<p class="font-body-md text-foam-white">Anda belum masuk. Data di bawah ini contoh tampilan — <span class="text-coral-sand">login</span> untuk melihat poin &amp; laporan asli Anda.</p>
+</div>
+<a href="login.html" class="px-5 py-2.5 rounded-full bg-bioluminescence text-abyss-ink font-label-caps text-label-caps font-bold">Masuk Sekarang</a>
+</div>
+<!-- Identity -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end mb-section-gap">
+<div class="lg:col-span-8 flex flex-col md:flex-row items-center md:items-end gap-8">
+<div class="relative sonar-ping">
+<div class="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-bioluminescence/30 p-1 biolume-glow overflow-hidden bg-ocean-navy flex items-center justify-center">
+<span class="material-symbols-outlined text-bioluminescence text-6xl">account_circle</span>
+</div>
+<div class="absolute bottom-2 right-2 w-10 h-10 bg-secondary rounded-full flex items-center justify-center border-4 border-abyss-ink">
+<span class="material-symbols-outlined text-abyss-ink text-body-lg" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="text-center md:text-left">
+<span id="profileLevelBadge" class="font-label-caps text-label-caps text-secondary tracking-[0.2em] block mb-2">PLATINUM GUARDIAN</span>
+<h1 id="profileUserName" class="font-display-hero text-[32px] md:text-display-hero text-foam-white leading-none">Kadek Wira</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md">Berkontribusi menjaga ekosistem pesisir Serangan. Top 1% pelapor kuartal ini.</p>
+</div>
+</div>
+<div class="lg:col-span-4 glass-panel p-8 md:p-container-padding rounded-[40px] flex flex-col items-center justify-center">
+<span class="font-label-caps text-label-caps text-outline-variant mb-4">TOTAL FLIP POINTS</span>
+<div id="profilePoints" class="font-data-lg text-[48px] md:text-[64px] text-bioluminescence leading-none mb-2 tabular-nums">820</div>
+<div class="flex items-center gap-2 text-secondary font-data-sm text-data-sm">
+<span class="material-symbols-outlined">trending_up</span>
+<span>+45 poin minggu ini</span>
+</div>
+</div>
+</section>
+
+<!-- Stats -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-section-gap">
+<div class="glass-panel p-6 md:p-container-padding rounded-[32px] transition-all hover:-translate-y-2 group">
+<div class="flex justify-between items-start mb-10">
+<span class="material-symbols-outlined text-bioluminescence text-[36px] group-hover:scale-110 transition-transform">monitoring</span>
+<span class="font-data-sm text-data-sm text-outline">LAPORAN</span>
+</div>
+<div class="font-data-lg text-headline-md text-foam-white mb-2">12</div>
+<p class="font-body-md text-on-surface-variant">Laporan Terverifikasi</p>
+</div>
+<div class="glass-panel p-6 md:p-container-padding rounded-[32px] transition-all hover:-translate-y-2 group">
+<div class="flex justify-between items-start mb-10">
+<span class="material-symbols-outlined text-coral-sand text-[36px] group-hover:scale-110 transition-transform">healing</span>
+<span class="font-data-sm text-data-sm text-outline">DAMPAK</span>
+</div>
+<div class="font-data-lg text-headline-md text-foam-white mb-2">4</div>
+<p class="font-body-md text-on-surface-variant">Satwa Terselamatkan</p>
+</div>
+<div class="glass-panel p-6 md:p-container-padding rounded-[32px] transition-all hover:-translate-y-2 group">
+<div class="flex justify-between items-start mb-10">
+<span class="material-symbols-outlined text-sunlight-blue text-[36px] group-hover:scale-110 transition-transform">school</span>
+<span class="font-data-sm text-data-sm text-outline">BELAJAR</span>
+</div>
+<div class="font-data-lg text-headline-md text-foam-white mb-2">86%</div>
+<p class="font-body-md text-on-surface-variant">Modul Learn Selesai</p>
+</div>
+<div class="glass-panel p-6 md:p-container-padding rounded-[32px] transition-all hover:-translate-y-2 group">
+<div class="flex justify-between items-start mb-10">
+<span class="material-symbols-outlined text-secondary text-[36px] group-hover:scale-110 transition-transform">military_tech</span>
+<span class="font-data-sm text-data-sm text-outline">LEVEL</span>
+</div>
+<div class="font-data-lg text-headline-md text-foam-white mb-2">Platinum</div>
+<p class="font-body-md text-on-surface-variant">700+ poin</p>
+</div>
+</section>
+
+<!-- Reward Table -->
+<section class="glass-panel rounded-[32px] p-6 md:p-container-padding mb-section-gap">
+<h2 class="font-headline-md text-[22px] md:text-headline-md text-foam-white mb-8">Tabel Reward</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-white/10">
+<th class="py-3 pr-4 font-label-caps text-label-caps text-on-surface-variant">LEVEL</th>
+<th class="py-3 pr-4 font-label-caps text-label-caps text-on-surface-variant">POIN</th>
+<th class="py-3 font-label-caps text-label-caps text-on-surface-variant">REWARD</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-foam-white">
+<tr class="border-b border-white/5"><td class="py-3 pr-4">Bronze</td><td class="py-3 pr-4 font-data-sm">0–99</td><td class="py-3">Badge Digital</td></tr>
+<tr class="border-b border-white/5"><td class="py-3 pr-4">Silver</td><td class="py-3 pr-4 font-data-sm">100–299</td><td class="py-3">Sertifikat Digital</td></tr>
+<tr class="border-b border-white/5"><td class="py-3 pr-4">Gold</td><td class="py-3 pr-4 font-data-sm">300–699</td><td class="py-3">Merchandise</td></tr>
+<tr class="text-bioluminescence font-bold"><td class="py-3 pr-4">Platinum</td><td class="py-3 pr-4 font-data-sm">700+</td><td class="py-3">Undangan Turtle Release di TCEC</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- Achievements & Leaderboard -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 glass-panel p-6 md:p-container-padding rounded-[32px]">
+<div class="flex justify-between items-center mb-10">
+<h2 class="font-headline-md text-[20px] md:text-headline-md text-foam-white">Koleksi Pencapaian</h2>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 md:w-20 md:h-20 mb-4 rounded-full bg-bioluminescence/10 border border-bioluminescence/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-bioluminescence text-3xl" style="font-variation-settings: 'FILL' 1;">travel_explore</span>
+</div>
+<span class="font-body-md text-foam-white font-bold text-sm">First Scan</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 md:w-20 md:h-20 mb-4 rounded-full bg-coral-sand/10 border border-coral-sand/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-coral-sand text-3xl" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+</div>
+<span class="font-body-md text-foam-white font-bold text-sm">First Report</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 md:w-20 md:h-20 mb-4 rounded-full bg-sunlight-blue/10 border border-sunlight-blue/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-sunlight-blue text-3xl" style="font-variation-settings: 'FILL' 1;">quiz</span>
+</div>
+<span class="font-body-md text-foam-white font-bold text-sm">Quiz Master</span>
+</div>
+<div class="flex flex-col items-center text-center opacity-40">
+<div class="w-16 h-16 md:w-20 md:h-20 mb-4 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-3xl">shield</span>
+</div>
+<span class="font-body-md text-on-surface-variant font-bold text-sm">Marine Guardian</span>
+</div>
+</div>
+</div>
+
+<div class="lg:col-span-4 glass-panel p-6 md:p-container-padding rounded-[32px]">
+<h2 class="font-headline-md text-[20px] md:text-headline-md text-foam-white mb-8">Leaderboard</h2>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-bioluminescence/10 border border-bioluminescence text-bioluminescence font-data-lg text-data-lg">1</div>
+<div class="flex-1">
+<div class="font-body-md font-bold text-foam-white">Dr. Sarah T.</div>
+<div class="font-data-sm text-data-sm text-outline">2.400 pts</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-foam-white font-data-lg text-data-lg">2</div>
+<div class="flex-1">
+<div class="font-body-md font-bold text-foam-white">OceanWatcher88</div>
+<div class="font-data-sm text-data-sm text-outline">2.150 pts</div>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 -mx-4 bg-bioluminescence/5 rounded-2xl border border-bioluminescence/20">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-bioluminescence text-abyss-ink font-data-lg text-data-lg font-bold">12</div>
+<div class="flex-1">
+<div class="font-body-md font-bold text-bioluminescence">Kadek Wira (Anda)</div>
+<div class="font-data-sm text-data-sm text-bioluminescence/70">820 pts</div>
+</div>
+<span class="material-symbols-outlined text-bioluminescence">keyboard_double_arrow_up</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="relative z-10 w-full py-section-gap px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8 bg-abyss-ink border-t border-white/5">
+<div class="font-display-hero text-headline-md text-foam-white">FLIPOINT</div>
+<p class="font-body-md text-body-md text-on-background text-center md:text-left">© 2026 FLIPOINT. Bermitra dengan Universitas Udayana &amp; TCEC Serangan.</p>
+</footer>
+
+<a href="report.html" class="fixed bottom-8 right-8 w-16 h-16 md:w-20 md:h-20 rounded-full bg-bioluminescence text-abyss-ink flex items-center justify-center shadow-[0_0_40px_rgba(92,255,209,0.4)] z-[60] hover:scale-110 transition-transform group">
+<span class="material-symbols-outlined text-[28px] md:text-[32px]" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+</a>
+
+<script src="assets/js/auth-client.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+function handleLogout(e) {
+  e.preventDefault();
+  flipointClearSession();
+  window.location.href = 'index.html';
+}
+
+function levelLabel(level) {
+  const map = {
+    BRONZE: 'BRONZE GUARDIAN',
+    SILVER: 'SILVER GUARDIAN',
+    GOLD: 'GOLD GUARDIAN',
+    PLATINUM: 'PLATINUM GUARDIAN'
+  };
+  return map[level] || 'BRONZE GUARDIAN';
+}
+
+async function loadProfile() {
+  if (!flipointIsLoggedIn()) {
+    document.getElementById('guestBanner').classList.remove('hidden');
+    return;
+  }
+  try {
+    const data = await flipointApiFetch('/users/me');
+    const user = data.user;
+    document.getElementById('profileUserName').textContent = user.fullName;
+    document.getElementById('profileLevelBadge').textContent = levelLabel(user.level);
+    document.getElementById('profilePoints').textContent = user.points;
+  } catch (err) {
+    console.warn('FLIPOINT: gagal memuat profil dari backend, menampilkan data cache lokal.', err);
+    const cachedUser = flipointGetUser();
+    if (cachedUser) {
+      document.getElementById('profileUserName').textContent = cachedUser.fullName;
+      document.getElementById('profilePoints').textContent = cachedUser.points || 0;
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadProfile);
+</script>
+</body>
+</html>

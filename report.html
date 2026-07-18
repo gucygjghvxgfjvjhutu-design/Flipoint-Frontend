@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FLIPOINT | Lapor Satwa Laut</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/js/tailwind-config.js"></script>
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .twilight-gradient { background: linear-gradient(180deg, #0F4C5C 0%, #082B38 100%); }
+  .modal-enter { animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.95) translateY(20px);} to { opacity: 1; transform: scale(1) translateY(0);} }
+</style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+
+<header id="siteNav" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-surface/10 backdrop-blur-xl border-b border-foam-white/10">
+<a href="index.html" class="flex items-center gap-3">
+<img alt="FLIPOINT Logo" class="h-9 w-auto object-contain" src="assets/images/flipoint-logo.png">
+<span class="font-display-hero text-headline-md font-bold text-bioluminescence tracking-tight">FLIPOINT</span>
+</a>
+<nav class="hidden md:flex items-center gap-12">
+<a class="text-on-surface-variant hover:text-foam-white transition-colors font-body-md" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-foam-white transition-colors font-body-md" href="learn.html">Learn</a>
+<a class="text-on-surface-variant hover:text-foam-white transition-colors font-body-md" href="about.html">About</a>
+<a class="text-on-surface-variant hover:text-foam-white transition-colors font-body-md" href="contact.html">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="login.html" class="js-profile-link hidden sm:flex items-center gap-3 px-4 py-2 rounded-full border border-foam-white/20 bg-white/5">
+<span class="material-symbols-outlined text-bioluminescence" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="text-foam-white font-body-md">Profile</span>
+</a>
+<button id="mobileNavToggle" class="md:hidden text-foam-white"><span class="material-symbols-outlined">menu</span></button>
+</div>
+</header>
+
+<div id="mobileNavMenu" class="hidden fixed top-20 left-0 w-full bg-abyss-ink/95 backdrop-blur-xl z-40 md:hidden flex flex-col p-8 gap-6 border-b border-white/10">
+<a href="index.html" class="text-foam-white/80">Home</a>
+<a href="learn.html" class="text-foam-white/80">Learn</a>
+<a href="about.html" class="text-foam-white/80">About</a>
+<a href="contact.html" class="text-foam-white/80">Contact</a>
+<a href="login.html" class="js-profile-link text-bioluminescence font-bold">Profile</a>
+</div>
+
+<aside class="fixed right-4 top-1/2 -translate-y-1/2 w-16 z-40 hidden md:flex flex-col items-center py-8 gap-10 bg-ocean-navy/40 backdrop-blur-md border-l border-white/5 rounded-l-full shadow-2xl">
+<a href="index.html" class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-outline">water_drop</span>
+<span class="font-data-sm text-data-sm text-outline">0m</span>
+</a>
+<div class="flex flex-col items-center gap-1 text-bioluminescence scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sailing</span>
+<span class="font-data-sm text-data-sm">600m</span>
+</div>
+<a href="learn.html" class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-outline">scuba_diving</span>
+<span class="font-data-sm text-data-sm text-outline">1200m</span>
+</a>
+</aside>
+
+<div class="fixed inset-0 z-[-1]"><div class="absolute inset-0 twilight-gradient opacity-80"></div></div>
+
+<main class="relative z-10 pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<section class="mb-16 text-center md:text-left flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+<div>
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-bioluminescence/30 bg-bioluminescence/5 mb-6">
+<span class="material-symbols-outlined text-bioluminescence text-sm">sensors</span>
+<span class="font-data-sm text-data-sm text-bioluminescence uppercase tracking-widest">Twilight Zone Aktif</span>
+</div>
+<h1 class="font-display-hero text-[36px] md:text-display-hero text-foam-white mb-4">Lapor Satwa Laut</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+Bantu konservasi laut Bali dengan mencatat penemuan penyu, paus, atau lumba-lumba yang terdampar. Sistem kami akan meneruskan laporan ke tim TCEC secara real-time.
+</p>
+</div>
+<button class="px-8 py-4 md:px-10 md:py-5 bg-bioluminescence text-abyss-ink rounded-[20px] font-body-lg font-bold flex items-center justify-center gap-4 hover:shadow-[0_0_30px_rgba(92,255,209,0.5)] transition-all group" onclick="openReportModal()">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+<span>REPORT MARINE ANIMAL</span>
+</button>
+</section>
+
+<div class="glass-container rounded-[40px] p-6 md:p-container-padding flex flex-col lg:flex-row gap-gutter">
+<div class="flex-1 space-y-8">
+<div class="flex justify-between items-center flex-wrap gap-3">
+<h2 class="font-headline-md text-[24px] md:text-headline-md text-foam-white">01. Lokasi Anda (Live Tracking)</h2>
+<button id="toggleTrackingBtn" onclick="toggleLiveTracking()" type="button" class="flex items-center gap-2 px-4 py-2 rounded-full border border-bioluminescence/30 bg-bioluminescence/5 text-bioluminescence font-label-caps text-[11px] tracking-wider hover:bg-bioluminescence/10 transition-all">
+<span class="material-symbols-outlined text-[16px]">near_me</span>
+<span id="trackingBtnLabel">Aktifkan Live Tracking</span>
+</button>
+</div>
+<div class="relative h-72 md:h-80 rounded-[30px] overflow-hidden border border-white/10 group bg-ocean-navy/60">
+<iframe id="trackingMapFrame" class="absolute inset-0 w-full h-full grayscale-[30%] contrast-[1.1]" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-8.7231,115.2346&z=13&output=embed"></iframe>
+<div class="absolute inset-0 bg-abyss-ink/40 pointer-events-none"></div>
+<div id="trackingIdlePlaceholder" class="relative flex flex-col items-center gap-3 text-center px-8 h-full justify-center">
+<span class="material-symbols-outlined text-foam-white text-5xl drop-shadow-lg">satellite_alt</span>
+<p class="font-data-sm text-data-sm text-foam-white drop-shadow-lg max-w-sm">Peta menampilkan area Bali. Tekan "Aktifkan Live Tracking" untuk menampilkan titik lokasi GPS Anda secara real-time.</p>
+</div>
+<div id="trackingActiveView" class="hidden absolute inset-0 flex items-center justify-center">
+<div class="sonar-ping">
+<div class="w-4 h-4 bg-bioluminescence rounded-full shadow-[0_0_15px_#5CFFD1]"></div>
+</div>
+</div>
+<div id="trackingCoordBar" class="hidden absolute bottom-6 left-6 right-6 flex flex-wrap items-center gap-3 justify-between z-10">
+<div class="px-5 py-3 bg-abyss-ink/80 backdrop-blur-md rounded-xl border border-white/10">
+<span id="trackingCoordText" class="font-data-sm text-data-sm text-foam-white">Mencari sinyal GPS...</span>
+</div>
+<div class="px-4 py-2 bg-abyss-ink/80 backdrop-blur-md rounded-xl border border-white/10 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-bioluminescence animate-pulse"></span>
+<span id="trackingAccuracyText" class="font-data-sm text-[11px] text-bioluminescence">akurasi —</span>
+</div>
+</div>
+</div>
+<div class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-[30px] text-center">
+<span class="material-symbols-outlined text-outline text-4xl mb-3">tide</span>
+<p class="font-body-lg text-on-surface-variant">Aktifkan live tracking di atas, lalu tekan tombol <strong class="text-bioluminescence">Report Marine Animal</strong> — koordinat Anda akan otomatis terisi di form laporan.</p>
+</div>
+</div>
+
+<div class="w-full lg:w-80 flex flex-col border-t lg:border-t-0 lg:border-l border-white/10 pt-10 lg:pt-0 lg:pl-10">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant tracking-[0.2em] uppercase mb-10">Status Laporan</h3>
+<div class="space-y-10 relative">
+<div class="absolute left-[15px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-bioluminescence via-bioluminescence/50 to-white/5"></div>
+<div class="relative flex items-start gap-6">
+<div class="relative z-10 w-8 h-8 rounded-full bg-bioluminescence flex items-center justify-center shadow-[0_0_15px_#5CFFD1]">
+<span class="material-symbols-outlined text-abyss-ink text-sm" style="font-variation-settings: 'FILL' 1;">radio</span>
+</div>
+<div class="space-y-1">
+<p class="font-body-md text-bioluminescence font-bold">Report Received</p>
+<p class="font-data-sm text-data-sm text-outline">Laporan diterima sistem</p>
+</div>
+</div>
+<div class="relative flex items-start gap-6 opacity-40">
+<div class="relative z-10 w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-foam-white text-sm">psychology</span>
+</div>
+<div class="space-y-1">
+<p class="font-body-md text-foam-white">AI Verification</p>
+<p class="font-data-sm text-data-sm text-outline">Verifying species...</p>
+</div>
+</div>
+<div class="relative flex items-start gap-6 opacity-40">
+<div class="relative z-10 w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-foam-white text-sm">verified</span>
+</div>
+<div class="space-y-1">
+<p class="font-body-md text-foam-white">Verification Success</p>
+<p class="font-data-sm text-data-sm text-outline">Audit ilmiah</p>
+</div>
+</div>
+<div class="relative flex items-start gap-6 opacity-40">
+<div class="relative z-10 w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-foam-white text-sm">medical_services</span>
+</div>
+<div class="space-y-1">
+<p class="font-body-md text-foam-white">Rescue Team Dispatched</p>
+<p class="font-data-sm text-data-sm text-outline">Koordinasi tim rescue</p>
+</div>
+</div>
+<div class="relative flex items-start gap-6 opacity-40">
+<div class="relative z-10 w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-foam-white text-sm">account_balance_wallet</span>
+</div>
+<div class="space-y-1">
+<p class="font-body-md text-foam-white">Reward Pending</p>
+<p class="font-data-sm text-data-sm text-outline">Poin sedang diverifikasi</p>
+</div>
+</div>
+</div>
+<div class="mt-14 p-6 rounded-2xl bg-white/5 border border-white/10">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-coral-sand" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h4 class="font-label-caps text-label-caps text-coral-sand uppercase tracking-wider">Protokol Keamanan</h4>
+</div>
+<p class="font-data-sm text-data-sm text-on-surface-variant leading-relaxed">
+Jaga jarak aman minimal 50 meter dari satwa laut. Jangan mencoba menyelamatkan sendiri tanpa arahan resmi dari tim TCEC.
+</p>
+</div>
+</div>
+</div>
+
+<!-- Priority alerts -->
+<section class="mt-section-gap max-w-7xl mx-auto w-full">
+<h2 class="font-headline-md text-[22px] md:text-headline-md text-foam-white text-center mb-10">Perhatian Utama Saat Ini</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="group relative rounded-[32px] overflow-hidden aspect-[4/5] glass-container hover:scale-[1.02] transition-transform duration-700">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-1000" src="assets/images/turtle.jpg" alt="Penyu">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-8">
+<span class="font-data-sm text-data-sm text-bioluminescence block mb-2 uppercase tracking-widest">Terancam Punah</span>
+<h3 class="font-headline-md text-[22px] text-foam-white mb-2">Penyu Hijau</h3>
+</div>
+</div>
+<div class="group relative rounded-[32px] overflow-hidden aspect-[4/5] glass-container hover:scale-[1.02] transition-transform duration-700">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-1000" src="assets/images/whale.jpg" alt="Paus">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-8">
+<span class="font-data-sm text-data-sm text-bioluminescence block mb-2 uppercase tracking-widest">Pola Migrasi</span>
+<h3 class="font-headline-md text-[22px] text-foam-white mb-2">Paus Bungkuk</h3>
+</div>
+</div>
+<div class="group relative rounded-[32px] overflow-hidden aspect-[4/5] glass-container hover:scale-[1.02] transition-transform duration-700">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-1000" src="assets/images/dolphin.jpg" alt="Lumba-lumba">
+<div class="absolute inset-0 bg-gradient-to-t from-abyss-ink via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-8">
+<span class="font-data-sm text-data-sm text-bioluminescence block mb-2 uppercase tracking-widest">Laporan Komunitas</span>
+<h3 class="font-headline-md text-[22px] text-foam-white mb-2">Lumba-Lumba</h3>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="w-full py-section-gap px-margin-mobile md:px-margin-desktop bg-abyss-ink border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+<div class="flex flex-col items-center md:items-start gap-3">
+<span class="font-display-hero text-headline-md text-foam-white font-bold tracking-tight">FLIPOINT</span>
+<p class="font-body-md text-outline-variant max-w-sm text-center md:text-left">© 2026 FLIPOINT. Bermitra dengan Universitas Udayana &amp; TCEC Serangan.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body-md text-outline-variant hover:text-bioluminescence transition-colors" href="about.html">About</a>
+<a class="font-body-md text-outline-variant hover:text-bioluminescence transition-colors" href="contact.html">Contact</a>
+</div>
+</footer>
+
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-bioluminescence rounded-full shadow-[0_0_40px_rgba(92,255,209,0.5)] flex items-center justify-center z-50 group hover:scale-110 transition-all" onclick="openReportModal()">
+<span class="material-symbols-outlined text-abyss-ink text-3xl group-hover:rotate-12 transition-transform" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+</button>
+
+<!-- Report Modal -->
+<div class="fixed inset-0 z-[100] hidden" id="reportModal">
+<div class="absolute inset-0 bg-abyss-ink/90 backdrop-blur-sm" onclick="closeReportModal()"></div>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<div class="glass-container modal-enter bg-[#122b35] w-full max-w-3xl rounded-[40px] overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+<div class="p-6 md:p-8 border-b border-white/10 flex justify-between items-center bg-white/5">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-bioluminescence text-3xl">add_a_photo</span>
+<h2 class="font-display-hero text-[20px] md:text-headline-md text-foam-white">Laporan Insiden Satwa Laut</h2>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" onclick="closeReportModal()">
+<span class="material-symbols-outlined text-outline">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 md:p-10">
+<form class="space-y-8" id="reportForm" onsubmit="handleReportSubmit(event)">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white/5 rounded-3xl border border-white/5">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Lokasi</label>
+<div class="flex gap-2">
+<button type="button" id="gpsAutoBtn" onclick="fetchGpsForForm()" class="flex-1 py-3 rounded-xl border border-bioluminescence bg-bioluminescence/10 text-bioluminescence text-sm font-medium flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">my_location</span> GPS Otomatis
+</button>
+<button type="button" onclick="setLocationMode(this)" class="flex-1 py-3 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant text-sm font-medium">Pilih Pantai</button>
+</div>
+<p id="gpsStatusText" class="font-data-sm text-[11px] text-on-surface-variant pt-1">Belum ada lokasi terpasang.</p>
+<input type="hidden" id="reportLat">
+<input type="hidden" id="reportLng">
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Jenis Hewan</label>
+<select class="w-full bg-abyss-ink border border-white/10 rounded-xl px-4 py-3 text-foam-white focus:ring-1 focus:ring-bioluminescence focus:border-bioluminescence outline-none">
+<option>Penyu</option>
+<option>Paus</option>
+<option>Lumba-lumba</option>
+<option>Tidak Tahu</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Kondisi</label>
+<div class="flex gap-2">
+<button type="button" onclick="setActive(this)" class="flex-1 py-3 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant hover:border-bioluminescence/50 transition-all text-sm font-medium">Hidup</button>
+<button type="button" onclick="setActive(this)" class="flex-1 py-3 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant hover:border-bioluminescence/50 transition-all text-sm font-medium">Terluka</button>
+<button type="button" onclick="setActive(this)" class="flex-1 py-3 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant hover:border-bioluminescence/50 transition-all text-sm font-medium">Mati</button>
+</div>
+</div>
+<div class="space-y-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Ukuran</label>
+<div class="flex gap-2">
+<button type="button" onclick="setActive(this)" class="flex-1 py-3 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant hover:border-bioluminescence/50 transition-all text-sm font-medium">Kecil</button>
+<button type="button" onclick="setActive(this)" class="flex-1 py-3 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant hover:border-bioluminescence/50 transition-all text-sm font-medium">Sedang</button>
+<button type="button" onclick="setActive(this)" class="flex-1 py-3 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant hover:border-bioluminescence/50 transition-all text-sm font-medium">Besar</button>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Warna</label>
+<input class="w-full bg-abyss-ink border border-white/10 rounded-xl px-4 py-3 text-foam-white focus:ring-1 focus:ring-bioluminescence focus:border-bioluminescence outline-none" placeholder="Hijau, Hitam, Abu, Coklat..." type="text">
+</div>
+<div class="space-y-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Bukti Visual</label>
+<!-- Tab switch -->
+<div class="flex gap-2 mb-1">
+<button type="button" id="tabUploadBtn" onclick="switchEvidenceTab('upload')" class="flex-1 py-2.5 rounded-xl border border-bioluminescence bg-bioluminescence/10 text-bioluminescence text-sm font-medium flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">upload_file</span> Upload File
+</button>
+<button type="button" id="tabCameraBtn" onclick="switchEvidenceTab('camera')" class="flex-1 py-2.5 rounded-xl border border-white/10 bg-white/5 text-on-surface-variant text-sm font-medium flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span> Gunakan Kamera
+</button>
+</div>
+
+<!-- Upload File panel -->
+<div id="uploadPanel">
+<label for="fileEvidenceInput" class="border-2 border-dashed border-white/10 rounded-3xl p-8 text-center hover:border-bioluminescence/30 hover:bg-bioluminescence/5 transition-all cursor-pointer group flex flex-col items-center">
+<span class="material-symbols-outlined text-bioluminescence text-4xl mb-3 block group-hover:scale-110 transition-transform">cloud_upload</span>
+<p class="font-body-md text-foam-white mb-1">Seret &amp; lepas, atau klik untuk pilih foto/video</p>
+<p class="font-data-sm text-data-sm text-outline uppercase">jpg, png, mp4 maks 100mb</p>
+</label>
+<input type="file" id="fileEvidenceInput" accept="image/*,video/*" class="hidden" onchange="handleFileEvidence(event)">
+<div id="fileEvidencePreviewWrap" class="hidden mt-4 relative rounded-2xl overflow-hidden border border-white/10">
+<img id="fileEvidencePreview" class="w-full max-h-64 object-cover" alt="Pratinjau bukti">
+<button type="button" onclick="clearFileEvidence()" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-abyss-ink/80 flex items-center justify-center text-foam-white hover:bg-abyss-ink transition-all">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+
+<!-- Camera panel -->
+<div id="cameraPanel" class="hidden">
+<div class="relative rounded-3xl overflow-hidden border border-white/10 bg-abyss-ink aspect-video flex items-center justify-center">
+<video id="cameraVideo" class="w-full h-full object-cover hidden" autoplay playsinline muted></video>
+<canvas id="cameraCanvas" class="hidden"></canvas>
+<img id="cameraCapturedImg" class="w-full h-full object-cover hidden" alt="Foto hasil kamera">
+<div id="cameraIdleState" class="flex flex-col items-center gap-3 text-center px-8">
+<span class="material-symbols-outlined text-outline text-5xl">videocam</span>
+<p class="font-data-sm text-data-sm text-on-surface-variant">Izinkan akses kamera untuk mengambil foto langsung dari lokasi kejadian.</p>
+</div>
+<div id="cameraErrorState" class="hidden flex-col items-center gap-3 text-center px-8">
+<span class="material-symbols-outlined text-error text-4xl">videocam_off</span>
+<p class="font-data-sm text-data-sm text-error" id="cameraErrorText">Kamera tidak dapat diakses.</p>
+</div>
+</div>
+<div class="flex gap-3 mt-4">
+<button type="button" id="cameraStartBtn" onclick="startCamera()" class="flex-1 py-3 rounded-xl bg-bioluminescence text-abyss-ink text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">videocam</span> Aktifkan Kamera
+</button>
+<button type="button" id="cameraCaptureBtn" onclick="capturePhoto()" class="hidden flex-1 py-3 rounded-xl bg-bioluminescence text-abyss-ink text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span> Ambil Foto
+</button>
+<button type="button" id="cameraRetakeBtn" onclick="retakePhoto()" class="hidden flex-1 py-3 rounded-xl border border-white/10 bg-white/5 text-foam-white text-sm font-medium flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">replay</span> Ambil Ulang
+</button>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Catatan Tambahan</label>
+<textarea class="w-full bg-abyss-ink border border-white/10 rounded-xl px-4 py-4 text-foam-white focus:ring-1 focus:ring-bioluminescence focus:border-bioluminescence outline-none" placeholder="Ceritakan kondisi di lapangan..." rows="3"></textarea>
+</div>
+<button class="w-full py-5 bg-bioluminescence text-abyss-ink rounded-2xl font-body-lg font-bold flex items-center justify-center gap-4 hover:shadow-[0_0_30px_rgba(92,255,209,0.3)] transition-all" type="submit">
+<span>KIRIM LAPORAN</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Success Modal -->
+<div class="fixed inset-0 z-[110] hidden" id="successModal">
+<div class="absolute inset-0 bg-abyss-ink/95 backdrop-blur-md"></div>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<div class="glass-container modal-enter bg-ocean-navy w-full max-w-lg rounded-[40px] p-8 md:p-12 text-center relative overflow-hidden border border-bioluminescence/20 shadow-[0_0_50px_rgba(92,255,209,0.1)]">
+<div class="relative z-10">
+<div class="w-24 h-24 bg-bioluminescence/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-bioluminescence/30 sonar-ping">
+<span class="material-symbols-outlined text-bioluminescence text-5xl" style="font-variation-settings: 'FILL' 1;">medical_information</span>
+</div>
+<h2 class="font-display-hero text-headline-md text-foam-white mb-4">Laporan Terkirim</h2>
+<p class="font-body-lg text-on-surface-variant mb-10">Proses verifikasi dimulai. Tim rescue di sekitar lokasi Anda telah diberi tahu.</p>
+<div class="grid grid-cols-2 gap-6 mb-10">
+<div class="p-6 bg-white/5 rounded-3xl border border-white/10">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Estimasi Tim Tiba</p>
+<p class="font-data-lg text-data-lg text-bioluminescence">~14 MENIT</p>
+</div>
+<div class="p-6 bg-white/5 rounded-3xl border border-white/10">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Poin Tertunda</p>
+<p class="font-data-lg text-data-lg text-coral-sand">1.250 PTS</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<button class="w-full py-5 bg-bioluminescence text-abyss-ink rounded-2xl font-bold transition-all hover:brightness-110" onclick="closeAllModals()">KEMBALI KE BERANDA</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="assets/js/auth-client.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+// ===== Config =====
+// Ganti dengan URL backend Anda setelah dideploy (lihat /backend/README.md)
+const API_BASE_URL = window.FLIPOINT_API_BASE || 'http://localhost:4000/api';
+
+function openReportModal() {
+  document.getElementById('reportModal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeReportModal() {
+  document.getElementById('reportModal').classList.add('hidden');
+  document.body.style.overflow = '';
+  stopCameraStream();
+}
+function closeAllModals() {
+  document.getElementById('reportModal').classList.add('hidden');
+  document.getElementById('successModal').classList.add('hidden');
+  document.body.style.overflow = '';
+  stopCameraStream();
+}
+function setActive(btn) {
+  const buttons = btn.parentElement.querySelectorAll('button');
+  buttons.forEach(b => {
+    b.classList.remove('bg-bioluminescence', 'text-abyss-ink', 'border-bioluminescence');
+    b.classList.add('bg-white/5', 'text-on-surface-variant', 'border-white/10');
+  });
+  btn.classList.add('bg-bioluminescence', 'text-abyss-ink', 'border-bioluminescence');
+  btn.classList.remove('bg-white/5', 'text-on-surface-variant', 'border-white/10');
+}
+
+// ===================================================================
+// LIVE GPS TRACKING (panel utama di luar modal)
+// ===================================================================
+let liveWatchId = null;
+
+let lastMapUpdateTs = 0;
+
+function toggleLiveTracking() {
+  if (liveWatchId !== null) {
+    navigator.geolocation.clearWatch(liveWatchId);
+    liveWatchId = null;
+    document.getElementById('trackingBtnLabel').textContent = 'Aktifkan Live Tracking';
+    document.getElementById('trackingIdlePlaceholder').classList.remove('hidden');
+    document.getElementById('trackingActiveView').classList.add('hidden');
+    document.getElementById('trackingCoordBar').classList.add('hidden');
+    return;
+  }
+  if (!('geolocation' in navigator)) {
+    alert('Perangkat/browser Anda tidak mendukung fitur GPS.');
+    return;
+  }
+  document.getElementById('trackingBtnLabel').textContent = 'Menghubungkan...';
+  liveWatchId = navigator.geolocation.watchPosition(
+    (pos) => {
+      document.getElementById('trackingIdlePlaceholder').classList.add('hidden');
+      document.getElementById('trackingActiveView').classList.remove('hidden');
+      document.getElementById('trackingCoordBar').classList.remove('hidden');
+      document.getElementById('trackingBtnLabel').textContent = 'Hentikan Live Tracking';
+      const { latitude, longitude, accuracy } = pos.coords;
+      document.getElementById('trackingCoordText').textContent =
+        `${latitude.toFixed(5)}° , ${longitude.toFixed(5)}°`;
+      document.getElementById('trackingAccuracyText').textContent = `akurasi ±${Math.round(accuracy)}m`;
+      // Simpan koordinat terbaru agar bisa dipakai form report
+      window.__flipointLastCoords = { lat: latitude, lng: longitude };
+
+      // Update peta Google Maps, dibatasi tiap ~8 detik agar iframe tidak reload terus-menerus
+      const now = Date.now();
+      if (now - lastMapUpdateTs > 8000) {
+        lastMapUpdateTs = now;
+        const mapFrame = document.getElementById('trackingMapFrame');
+        if (mapFrame) {
+          mapFrame.src = `https://www.google.com/maps?q=${latitude},${longitude}&z=16&output=embed`;
+        }
+      }
+    },
+    (err) => {
+      document.getElementById('trackingBtnLabel').textContent = 'Aktifkan Live Tracking';
+      alert('Tidak dapat mengambil lokasi: ' + err.message + '. Pastikan izin lokasi diaktifkan di browser Anda.');
+      liveWatchId = null;
+    },
+    { enableHighAccuracy: true, maximumAge: 5000, timeout: 15000 }
+  );
+}
+
+// ===================================================================
+// GPS OTOMATIS di dalam modal form
+// ===================================================================
+function setLocationMode(btn) {
+  setActive(btn);
+}
+
+async function reverseGeocode(lat, lng) {
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=14`, {
+      headers: { 'Accept-Language': 'id' }
+    });
+    if (!res.ok) throw new Error('gagal reverse geocode');
+    const data = await res.json();
+    return data.display_name || null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function fetchGpsForForm() {
+  const statusEl = document.getElementById('gpsStatusText');
+  if (!('geolocation' in navigator)) {
+    statusEl.textContent = 'Browser tidak mendukung GPS.';
+    return;
+  }
+  statusEl.textContent = 'Mengambil lokasi...';
+  navigator.geolocation.getCurrentPosition(
+    async (pos) => {
+      const { latitude, longitude } = pos.coords;
+      document.getElementById('reportLat').value = latitude;
+      document.getElementById('reportLng').value = longitude;
+      statusEl.textContent = `Lokasi: ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+      const place = await reverseGeocode(latitude, longitude);
+      if (place) statusEl.textContent = `📍 ${place}`;
+    },
+    (err) => {
+      statusEl.textContent = 'Gagal mengambil lokasi: ' + err.message;
+    },
+    { enableHighAccuracy: true, timeout: 15000 }
+  );
+}
+
+// ===================================================================
+// EVIDENCE TABS: Upload File vs Kamera
+// ===================================================================
+window.__flipointEvidence = null; // dataURL foto/video yang akan dikirim ke backend
+
+function switchEvidenceTab(tab) {
+  const uploadBtn = document.getElementById('tabUploadBtn');
+  const cameraBtn = document.getElementById('tabCameraBtn');
+  const uploadPanel = document.getElementById('uploadPanel');
+  const cameraPanel = document.getElementById('cameraPanel');
+  const activeCls = ['bg-bioluminescence', 'text-abyss-ink', 'border-bioluminescence'];
+  const inactiveCls = ['bg-white/5', 'text-on-surface-variant', 'border-white/10'];
+
+  if (tab === 'upload') {
+    uploadPanel.classList.remove('hidden');
+    cameraPanel.classList.add('hidden');
+    uploadBtn.classList.add(...activeCls); uploadBtn.classList.remove(...inactiveCls);
+    cameraBtn.classList.add(...inactiveCls); cameraBtn.classList.remove(...activeCls);
+    stopCameraStream();
+  } else {
+    uploadPanel.classList.add('hidden');
+    cameraPanel.classList.remove('hidden');
+    cameraBtn.classList.add(...activeCls); cameraBtn.classList.remove(...inactiveCls);
+    uploadBtn.classList.add(...inactiveCls); uploadBtn.classList.remove(...activeCls);
+  }
+}
+
+function handleFileEvidence(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    window.__flipointEvidence = e.target.result;
+    if (file.type.startsWith('image/')) {
+      document.getElementById('fileEvidencePreview').src = e.target.result;
+      document.getElementById('fileEvidencePreviewWrap').classList.remove('hidden');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearFileEvidence() {
+  document.getElementById('fileEvidenceInput').value = '';
+  document.getElementById('fileEvidencePreviewWrap').classList.add('hidden');
+  window.__flipointEvidence = null;
+}
+
+// ===================================================================
+// KAMERA LANGSUNG
+// ===================================================================
+let cameraStream = null;
+
+async function startCamera() {
+  const errorState = document.getElementById('cameraErrorState');
+  const idleState = document.getElementById('cameraIdleState');
+  const video = document.getElementById('cameraVideo');
+  errorState.classList.add('hidden');
+  errorState.classList.remove('flex');
+
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    errorState.classList.remove('hidden');
+    errorState.classList.add('flex');
+    document.getElementById('cameraErrorText').textContent = 'Perangkat/browser Anda tidak mendukung akses kamera.';
+    return;
+  }
+  try {
+    cameraStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: 'environment' } },
+      audio: false
+    });
+    video.srcObject = cameraStream;
+    video.classList.remove('hidden');
+    idleState.classList.add('hidden');
+    document.getElementById('cameraCapturedImg').classList.add('hidden');
+    document.getElementById('cameraStartBtn').classList.add('hidden');
+    document.getElementById('cameraCaptureBtn').classList.remove('hidden');
+    document.getElementById('cameraCaptureBtn').classList.add('flex');
+    document.getElementById('cameraRetakeBtn').classList.add('hidden');
+  } catch (err) {
+    errorState.classList.remove('hidden');
+    errorState.classList.add('flex');
+    document.getElementById('cameraErrorText').textContent =
+      'Tidak dapat mengakses kamera: ' + err.message + '. Periksa izin kamera pada browser Anda.';
+  }
+}
+
+function capturePhoto() {
+  const video = document.getElementById('cameraVideo');
+  const canvas = document.getElementById('cameraCanvas');
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+  window.__flipointEvidence = dataUrl;
+
+  const capturedImg = document.getElementById('cameraCapturedImg');
+  capturedImg.src = dataUrl;
+  capturedImg.classList.remove('hidden');
+  video.classList.add('hidden');
+
+  document.getElementById('cameraCaptureBtn').classList.add('hidden');
+  document.getElementById('cameraCaptureBtn').classList.remove('flex');
+  document.getElementById('cameraRetakeBtn').classList.remove('hidden');
+  document.getElementById('cameraRetakeBtn').classList.add('flex');
+
+  // Hentikan stream setelah foto diambil untuk hemat baterai
+  if (cameraStream) {
+    cameraStream.getTracks().forEach(t => t.stop());
+    cameraStream = null;
+  }
+}
+
+function retakePhoto() {
+  document.getElementById('cameraCapturedImg').classList.add('hidden');
+  window.__flipointEvidence = null;
+  startCamera();
+}
+
+function stopCameraStream() {
+  if (cameraStream) {
+    cameraStream.getTracks().forEach(t => t.stop());
+    cameraStream = null;
+  }
+  const video = document.getElementById('cameraVideo');
+  if (video) video.classList.add('hidden');
+  const idle = document.getElementById('cameraIdleState');
+  if (idle) idle.classList.remove('hidden');
+  const startBtn = document.getElementById('cameraStartBtn');
+  const captureBtn = document.getElementById('cameraCaptureBtn');
+  const retakeBtn = document.getElementById('cameraRetakeBtn');
+  if (startBtn) startBtn.classList.remove('hidden');
+  if (captureBtn) { captureBtn.classList.add('hidden'); captureBtn.classList.remove('flex'); }
+  if (retakeBtn) { retakeBtn.classList.add('hidden'); retakeBtn.classList.remove('flex'); }
+}
+
+// ===================================================================
+// SUBMIT LAPORAN KE BACKEND
+// ===================================================================
+async function handleReportSubmit(e) {
+  e.preventDefault();
+
+  const lat = document.getElementById('reportLat').value || (window.__flipointLastCoords && window.__flipointLastCoords.lat) || null;
+  const lng = document.getElementById('reportLng').value || (window.__flipointLastCoords && window.__flipointLastCoords.lng) || null;
+
+  const payload = {
+    species: document.querySelector('#reportForm select').value,
+    latitude: lat,
+    longitude: lng,
+    photo: window.__flipointEvidence || null,
+    notes: document.querySelector('#reportForm textarea').value
+  };
+
+  try {
+    const headers = { 'Content-Type': 'application/json' };
+    if (typeof flipointGetToken === 'function' && flipointGetToken()) {
+      headers.Authorization = `Bearer ${flipointGetToken()}`;
+    }
+    await fetch(`${API_BASE_URL}/reports`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    // Backend belum tersambung — tetap tampilkan alur sukses di frontend (demo mode)
+    console.warn('FLIPOINT: backend belum tersambung, submit berjalan di mode demo.', err);
+  }
+
+  stopCameraStream();
+  document.getElementById('reportModal').classList.add('hidden');
+  document.getElementById('successModal').classList.remove('hidden');
+}
+</script>
+</body>
+</html>
